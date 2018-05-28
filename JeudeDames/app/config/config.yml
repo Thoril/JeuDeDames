@@ -86,6 +86,6 @@ fos_user:
         confirmation:
             enabled: true
             from_email:
-                address: noreply@artru.ovh
-                sender_name: ARTRU Thomas
+                address: "thomas.artru@isen.yncrea.fr"
+                sender_name: "FOSBundle"
             template: 'email/registration.email.twig'
