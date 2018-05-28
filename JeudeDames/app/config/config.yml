@@ -88,4 +88,4 @@ fos_user:
             from_email:
                 address: noreply@artru.ovh
                 sender_name: ARTRU Thomas
-            template: MyAppMonBundle:User:registration.email.twig
+            template: 'email/registration.email.twig'

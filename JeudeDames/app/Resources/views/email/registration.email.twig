@@ -1,0 +1,12 @@
+{% block subject %} Confirmation d'inscription {% endblock %}
+    {% block body_text %}
+    {%autoescape false%}
+    Bonjour {{ user.username }} !
+    Confirme ton inscription en cliquant sur le lien suivant :
+{{ confirmationUrl }}
+
+Amicalement,
+
+Les créateurs du jeu 2 dames
+{%  endautoescape %}
+{% endblock %}
