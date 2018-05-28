@@ -5,7 +5,7 @@
 {% block body %}
 
     <h3> Créer une nouvelle partie</h3>
-
+    {% if is_granted('ROLE_USER') %}
     <div class="row">
         <form action ="" method="post" class="cols12">
             <div class="row">
@@ -16,10 +16,11 @@
             </div>
 
                 <div class="row">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Save</button>
-                    <i class="material-icons right"> Créer</i>
+                    <button class="btn waves-effect waves-light light-blue darken-1" type="submit" name="action">Créer <i class="material-icons">add</i></button>
+
                 </button>
                 </div>
         </form>
     </div>
+{% endif %}
 {% endblock %}

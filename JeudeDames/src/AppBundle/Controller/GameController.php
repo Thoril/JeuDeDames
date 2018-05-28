@@ -32,6 +32,9 @@ class GameController extends Controller
     public function addAction(Request $request)
     {
         if($request->isMethod('post')){
+            //Récupération des données de l'user
+            $user = $this->getUser();
+
             //création de la partie
             $game = new Game();
             //Récupération du nom de la partie
@@ -41,7 +44,7 @@ class GameController extends Controller
             //A la création il n'y a pas d'adversaire
             $game->setOpponant(null);
             //On récupère l'id du joueur qui créer la partie
-            $game->setCreator($this->getUser());
+            $game->setCreator($user->getId());
             $game->setBoard(null);
 
             $em = $this->getDoctrine()->getManager();

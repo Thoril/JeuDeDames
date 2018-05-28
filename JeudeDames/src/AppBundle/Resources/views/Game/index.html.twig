@@ -6,22 +6,31 @@
 
     <h3> Liste des parties en attente d'un joueur</h3>
 
-    {# {% if is_granted('ROLE_USER') %} #}
+     {% if is_granted('ROLE_USER') %}
             <a href="{{ path('app_game_add') }}" >
             <button class="btn waves-effect waves_light  light-blue darken-1">
-                Créer une nouvelle partie <i class="material-icons right">send</i>
+                Créer une nouvelle partie <i class="material-icons right">add</i>
             </button>
         </a>
-   {# {% endif %}#}
+
 
     <ul class="collection">
     {% for game in games %}
     <li class="collection-item avatar">
-        <i class="material-icons circler">folder</i>
         <span class="name">
-            <h5>{{ game.name }}</h5>
+            <h5><i class="material-icons circler">people</i> {{ game.name }}</h5>
         </span>
+
+        <blockquote> Créee par : {{ game.creator }}</blockquote>
+
+        <a href="#" >
+            <button class="btn waves-effect waves_light green">
+                Rejoindre <i class="material-icons">gamepad</i>
+            </button>
+        </a>
     </li>
+
     {% endfor %}
+     {% endif %}
 </ul>
 {% endblock %}
