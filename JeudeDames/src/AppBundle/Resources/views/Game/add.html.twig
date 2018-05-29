@@ -7,20 +7,24 @@
     <h3> Créer une nouvelle partie</h3>
     {% if is_granted('ROLE_USER') %}
     <div class="row">
-        <form action ="" method="post" class="cols12">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+       <!-- <form action ="" method="post" class="cols12">
             <div class="row">
-                <div class="input-field col s12">
-                    <input id="name" name="name" type="Text" class="validate">
+                <div class="input-field col s3">
+                    <input id="name" type="text" name="name" class="validate">
                     <label for="name">Nom de la partie</label>
                 </div>
-            </div>
+            </div>-->
 
-                <div class="row">
-                    <button class="btn waves-effect waves-light light-blue darken-1" type="submit" name="action">Créer <i class="material-icons">add</i></button>
 
-                </button>
+
+
+                <div class="row col s1 offset-s1">
+                    <button class="btn waves-effect waves-light light-blue darken-1" type="submit" name="action"><i class="material-icons left">add</i>Créer </button>
                 </div>
-        </form>
+       <!-- </form> -->
+        {{ form_end(form) }}
     </div>
 {% endif %}
 {% endblock %}

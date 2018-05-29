@@ -45,6 +45,13 @@ class Game
     /**
      * @var int
      *
+     * @ORM\Column(name="winner", type="integer", nullable=true)
+     */
+    private $winner;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="state", type="integer")
      */
     private $state;
@@ -137,6 +144,26 @@ class Game
     public function getOpponant()
     {
         return $this->opponant;
+    }
+
+    /**
+     * Get winner
+     *
+     * @return int
+     */
+    public function getWinner()
+    {
+        return $this->winner;
+    }
+
+    /**
+     * @param int $winner
+     *
+     * @return Game
+     */
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
     }
 
     /**
