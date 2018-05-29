@@ -10,12 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class GameController
  * @package AppBundle\Controller
- * @Route ("/game")
  */
 class GameController extends Controller
 {
     /**
-     * @Route("/", name="app_game_index")
+     * @Route("/", name="homepage")
      */
     public function indexAction()
     {
