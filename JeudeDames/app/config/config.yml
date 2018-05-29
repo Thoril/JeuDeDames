@@ -68,7 +68,7 @@ swiftmailer:
     auth_mode: login
     host:      "%mailer_host%"
     encryption: tls
-    port:
+    port: 587
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -85,7 +85,7 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
     registration:
-        confirmation:
+         confirmation:
             enabled: true
             from_email:
                 address: "thomas.artru@isen.yncrea.fr"
