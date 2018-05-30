@@ -15,22 +15,30 @@ use AppBundle\Entity\Pawns;
 class Board
 {
     public $board;
-    public $coordBoard = array(array());
+    public $coordBoard = array();
 
     public function board()
     {
 
     }
 
-    public function initBoard()
+    public function initTab2D()
     {
+        $tab = array();
         for ($x = 0; $x < 10; $x++) {
             $row = array();
             for ($y = 0; $y < 10; $y++) {
-                $row[$y] = 100262;
+                $row[$y] = 0;
             }
-            $this->board[$x] = $row;
+            $tab[$x] = $row;
         }
+        return $tab;
+    }
+
+    public function initBoard()
+    {
+        $object = new board();
+        $this->board = $object->initTab2D();
 
         //Je met une case sur deux dont lignes commençant par une case blanche
         for ($x = 0; $x < 9; $x = $x + 2) {
@@ -117,7 +125,7 @@ class Board
     public function movePawns($xInit, $yInit, $x, $y)
     {
         if ($this->board[$x][$y] == Type::Empty) {
-            if ($this->board[$x][$y] == Type::WhitePawn) {
+            if ($this->board[$xInit][$yInit] == Type::WhitePawn) {
 
             } else if ($this->board[$x][$y] == Type::BlackPawn) {
 
@@ -127,70 +135,90 @@ class Board
         }
     }
 
-    /**
-     * @return array
-     */
-    public function ableToMoveWhitePawns($x, $y)
-    {
-        $possibilities = array(array());
-        $count = 0;
-        if (($this->board[$x + 1][$y - 1] != Type::BlackPawn) && ($this->board[$x + 1][$y + 1] != Type::BlackPawn) && ($this->board[$x - 1][$y + 1] != Type::BlackPawn) && ($this->board[$x - 1][$y + 1] != Type::BlackPawn)) {
-            if ($y < 9 && $y > 0) {
-                //Cas classique
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y - 1;
-                $count++;
-
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y + 1;
-                $count++;
-            } elseif ($y == 0) {
-                //Cas sur le bord droit
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y + 1;
-                $count++;
-            } elseif ($y == 9) {
-                //Cas sur le bord gauche
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y - 1;
-                $count++;
-            }
-        } else {
-            $possibilities = $this->findAllWayPawns($x, $y);
+    public function isEdible($x, $y, $case){
+        switch ($case){
+            case "hl" :
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x-1][$y-1] == Type::BlackPawn
+                    && $this->board[$x-2][$y-2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x-1][$y-1] == Type::WhitePawn
+                    && $this->board[$x-2][$y-2] == Type::Empty){
+                    return true;
+                }
+                break;
+            case "hr" :
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x-1][$y+1] == Type::BlackPawn
+                    && $this->board[$x-2][$y+2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x-1][$y+1] == Type::WhitePawn
+                    && $this->board[$x-2][$y+2] == Type::Empty){
+                    return true;
+                }
+                break;
+            case"ll":
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x+1][$y-1] == Type::BlackPawn
+                    && $this->board[$x+2][$y-2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x+1][$y-1] == Type::WhitePawn
+                    && $this->board[$x+2][$y-2] == Type::Empty){
+                    return true;
+                }
+                break;
+            case "lr":
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x+1][$y+1] == Type::BlackPawn
+                    && $this->board[$x+2][$y+2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x+1][$y+2] == Type::WhitePawn
+                    && $this->board[$x+1][$y+2] == Type::Empty){
+                    return true;
+                }
+                break;
+            default:
+                return false;
+                break;
         }
-        return $possibilities;
+        return false;
     }
 
     /**
      * @return array
      */
-    public function ableToMoveBlackPawns($x, $y)
+    public function ableToMovePawns($x, $y)
     {
-        $possibilities = array(array());
+        $object = new board();
+        $possibilities = $object->initTab2D();
         $count = 0;
-        if ((($this->board[$x + 1][$y - 1] != Type::WhitePawn) && ($this->board[$x + 2][$y - 2] != Type::Empty))
-            && (($this->board[$x + 1][$y + 1] != Type::WhitePawn) && ($this->board[$x + 2][$y + 2] != Type::Empty))
-            && (($this->board[$x - 1][$y + 1] != Type::WhitePawn) && ($this->board[$x - 2][$y + 2] != Type::Empty))
-            && (($this->board[$x - 1][$y + 1] != Type::WhitePawn)&& ($this->board[$x - 2][$y + 2] != Type::Empty)))
+        if ($object->isEdible($x, $y, "hl") == true
+            || $object->isEdible($x, $y, "hr")== true
+            || $object->isEdible($x, $y, "ll")== true
+            || $object->isEdible($x, $y, "lr")== true)
         {
             if ($y < 9 && $y > 0) {
                 //Cas classique
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y - 1;
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y - 1;
                 $count++;
 
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y + 1;
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y + 1;
                 $count++;
             } elseif ($y == 0) {
                 //Cas sur le bord droit
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y + 1;
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y + 1;
                 $count++;
             } elseif ($y == 9) {
                 //Cas sur le bord gauche
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y - 1;
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y - 1;
                 $count++;
             }
         } else {
@@ -199,15 +227,23 @@ class Board
         return $possibilities;
     }
 
-    public function eat($x, $y)
+    public function free($x, $y)
     {
         if ($this->board[$x][$y] != Type::Empty || Type::Forbidden) {
             $this->board[$x][$y] = Type::Empty;
         }
     }
 
-    public function isOpponant($x, $y, $color){
-        //if($color == Type::)
+    public function eat($xEater, $yEater, $xEat, $yEat){
+        $xMouv = (-2)*($xEater - $xEat);
+        $yMouv = (-2)*($yEater - $yEat);
+
+        $xFutur = $xEater + $xMouv;
+        $yFutur = $yEater + $yMouv;
+
+        $this->movePawns($xEater, $yEater, $xFutur, $yFutur);
+        $this->free($xEat, $yEat);
+
     }
 
     /**
