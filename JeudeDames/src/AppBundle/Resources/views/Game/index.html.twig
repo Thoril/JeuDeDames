@@ -7,6 +7,7 @@
 
 
     {% if is_granted('ROLE_USER') %}
+        <p>Bienvenue {{ app.user.username }}</p>
         <h3> Liste des parties en attente d'un joueur</h3>
             <a href="{{ path('app_game_add') }}" >
             <button class="btn waves-effect waves_light  light-blue darken-1">
