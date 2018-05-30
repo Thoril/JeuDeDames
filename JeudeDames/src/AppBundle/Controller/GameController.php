@@ -96,6 +96,9 @@ class GameController extends Controller
             //flush entity manager
             $em->flush();
 
+            return $this->render('AppBundle:Game:play.html.twig', array(
+                'game' => $game
+            )); 
         }
 
         return $this->render('AppBundle:Game:play.html.twig', array(
