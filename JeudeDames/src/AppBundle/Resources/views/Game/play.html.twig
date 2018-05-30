@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Game:play{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_USER') %}
+        {% if game.state == 0 %}
+            <h4> En attente d'un joueur pour la partie : {{ game.name }}</h4>
+            <blockquote> Créee par : {{ game.creator }}</blockquote>
+
+            <a href="{{ path('app_game_remove', {id: game.id}) }}" >
+                <button class="btn waves-effect waves_light  red darken-1">
+                    Annuler <i class="material-icons right">clear</i>
+                </button>
+            </a>
+        {% else %}
+            <h4> Lancement de la partie : {{ game.name }}</h4>
+            <blockquote> Créee par : {{ game.creator }}</blockquote>
+        {% endif %}
+
+    {% endif %}
+
+{% endblock %}

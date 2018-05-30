@@ -60,7 +60,7 @@ class GameController extends Controller
 
             $id = $game->getId();
 
-            return $this->redirectToRoute('app_game_wait', [
+            return $this->redirectToRoute('app_game_play', [
                 'id'=>$id
             ]);
         }
@@ -72,16 +72,66 @@ class GameController extends Controller
 
 
     /**
-     * @Route("/wait{id}", requirements={"id": "\d+"}, name="app_game_wait")
+     * @Route("/play{id}", requirements={"id": "\d+"}, name="app_game_play")
      */
-    public function waitAction($id){
+    public function playAction($id){
 
-        return $this->render('AppBundle:Game:wait.html.twig', array(
+        $game = $this->getDoctrine()
+            ->getRepository(Game::class)
+            ->find($id);
+
+        $opponant = $game->getOpponant();
+        if($opponant != null){
+            //La partie est en cours
+            $game->setState(1);
+            $state = $game->getState();
+            echo "Opponant : $opponant";
+            echo "State : $state";
+
+            //Récupération du manager
+            $em = $this->getDoctrine()->getManager();
+            //persist the new forum
+            $em->persist($game);
+
+            //flush entity manager
+            $em->flush();
+
+        }
+
+        return $this->render('AppBundle:Game:play.html.twig', array(
+            'game' => $game
+       /* return $this->render('AppBundle:Game:play.html.twig', array(
             'game' => $this->getDoctrine()
                 ->getRepository(Game::class)
-                ->find($id)
+                ->find($id)*/
         ));
     }
+
+    /**
+     * @Route("/rejoindre{id}", requirements={"id": "\d+"}, name="app_game_rejoindre")
+     */
+    public function rejoindreAction($id){
+
+        $game = $this->getDoctrine()
+            ->getRepository(Game::class)
+            ->find($id);
+
+        $user = $this->getUser()->getId();
+        $game->setOpponant($user);
+
+        //Récupération du manager
+        $em = $this->getDoctrine()->getManager();
+        //persist the new forum
+        $em->persist($game);
+
+        //flush entity manager
+        $em->flush();
+
+        return $this->redirectToRoute('app_game_play', [
+            'id'=>$id
+        ]);
+    }
+
 
     /**
      * @Route("/remove{id}", requirements={"id" : "\d+"}, name="app_game_remove")
@@ -96,10 +146,11 @@ class GameController extends Controller
         $em->remove($game);
         $em->flush();
 
-        return $this->redirectToRoute('app_game_index', [
+        return $this->redirectToRoute('homepage', [
             'id'=>$id
         ]);
     }
+
 
 
 
