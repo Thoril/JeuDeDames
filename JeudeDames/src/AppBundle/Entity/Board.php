@@ -249,5 +249,12 @@ class Board
         return serialize($this->board);
     }
 
+    /**
+     * @param tableau serializé
+     */
+    public function setBoardFromSerializable($data){
+        $this->board = unserialize($data);
+    }
 
-}
+
+}   
