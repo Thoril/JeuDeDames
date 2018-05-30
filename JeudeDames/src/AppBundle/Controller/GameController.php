@@ -19,10 +19,13 @@ class GameController extends Controller
      */
     public function indexAction()
     {
+        $game = $this->getDoctrine()
+            ->getRepository(Game::class)
+            ->findAll();
+
         return $this->render('AppBundle:Game:index.html.twig', array(
-            'games' =>$this->getDoctrine()
-                ->getRepository(Game::class)
-                ->findAll()
+            'games' =>$game
+
         ));
     }
 
@@ -74,39 +77,48 @@ class GameController extends Controller
     /**
      * @Route("/play{id}", requirements={"id": "\d+"}, name="app_game_play")
      */
-    public function playAction($id){
+    public function playAction($id)
+    {
 
         $game = $this->getDoctrine()
             ->getRepository(Game::class)
             ->find($id);
 
         $opponant = $game->getOpponant();
-        if($opponant != null){
-            //La partie est en cours
-            $game->setState(1);
-            $state = $game->getState();
-            echo "Opponant : $opponant";
-            echo "State : $state";
+        $etat = $game->getState();
+        $winner = $game->getWinner();
+        echo" E0 : $etat  - ";
+        echo"OP0 : $opponant  -";
+        if ($opponant != null) {
+            if ($etat == 0) {
+                //En attente d'un second joueur
 
-            //Récupération du manager
-            $em = $this->getDoctrine()->getManager();
-            //persist the new forum
-            $em->persist($game);
+                //La partie est en cours
+                $game->setState(1);
 
-            //flush entity manager
-            $em->flush();
+                //Récupération du manager
+                $em = $this->getDoctrine()->getManager();
+                //persist the new forum
+                $em->persist($game);
 
-            return $this->render('AppBundle:Game:play.html.twig', array(
-                'game' => $game
-            )); 
+                //flush entity manager
+                $em->flush();
+                echo "E1 : $etat  -";
+
+
+                return $this->render('AppBundle:Game:play.html.twig', array(
+                    'game' => $game,
+                ));
+            }
+            else if($etat == 2){
+                if($winner != null){
+                    return $this->redirectToRoute('homepage');
+                }
+            }
         }
-
         return $this->render('AppBundle:Game:play.html.twig', array(
             'game' => $game
-       /* return $this->render('AppBundle:Game:play.html.twig', array(
-            'game' => $this->getDoctrine()
-                ->getRepository(Game::class)
-                ->find($id)*/
+
         ));
     }
 
@@ -154,11 +166,39 @@ class GameController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/abandon{id}", requirements={"id" : "\d+"}, name="app_game_abandon")
+     */
+    public function abandonAction($id){
 
+        $game = $this->getDoctrine()
+            ->getRepository(Game::class)
+            ->find($id);
 
+        $user = $this->getUser()->getId();
+        $creator = $game->getCreator();
+        $opponant = $game->getOpponant();
+        echo"user : $user  - ";
+        echo"creator : $creator  -";
+        echo"opponant : $opponant";
+        if($user == $creator){
+            $game->setWinner($opponant);
+        }
+        else if($user == $opponant){
+            $game->setWinner($creator);
+        }
+        //La partie est terminée
+        $game->setState(2);
 
+        //Récupération du manager
+        $em = $this->getDoctrine()->getManager();
+        //persist the new forum
+        $em->persist($game);
 
+        //flush entity manager
+        $em->flush();
 
+        return $this->redirectToRoute('homepage');
 
-
+    }
 }
