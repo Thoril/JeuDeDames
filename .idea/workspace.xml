@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0e191adb-de50-4b09-ae4f-0e218c79cf0a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/JeudeDames/tests/AppBundle/Controller/DefaultControllerTest.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/app/config/config.yml" afterPath="$PROJECT_DIR$/JeudeDames/app/config/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/bin/symfony_requirements" afterPath="$PROJECT_DIR$/JeudeDames/bin/symfony_requirements" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/composer.json" afterPath="$PROJECT_DIR$/JeudeDames/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/composer.lock" afterPath="$PROJECT_DIR$/JeudeDames/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/phpunit.xml.dist" afterPath="$PROJECT_DIR$/JeudeDames/phpunit.xml.dist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php" afterPath="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Pawns.php" afterPath="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Pawns.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" afterPath="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JeudeDames/web/config.php" afterPath="$PROJECT_DIR$/JeudeDames/web/config.php" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="Board.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="108" column="35" lean-forward="false" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
+              <folding>
+                <element signature="e#270#1282#0#PHP" expanded="false" />
+                <element signature="e#1288#2048#0#PHP" expanded="false" />
+                <element signature="e#2054#2811#0#PHP" expanded="false" />
+                <element signature="e#2817#2939#0#PHP" expanded="false" />
+                <element signature="e#2945#3234#0#PHP" expanded="false" />
+                <element signature="e#6647#6714#0#PHP" expanded="false" />
+                <element signature="e#6881#6965#0#PHP" expanded="false" />
+                <element signature="e#7019#7120#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoardEntityTest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="546">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding>
+                <element signature="e#42#69#0#PHP" expanded="true" />
+                <element signature="e#257#516#0#PHP" expanded="false" />
+                <element signature="e#522#751#0#PHP" expanded="false" />
+                <element signature="e#757#986#0#PHP" expanded="false" />
+                <element signature="e#992#1375#0#PHP" expanded="false" />
+                <element signature="e#1381#1675#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>unit</find>
+      <find>White</find>
+      <find>Longer</find>
+      <find>$i</find>
+      <find>$j</find>
+      <find>Type::BlackPawn</find>
+      <find>Upmty</find>
+      <find>$this-&gt;B</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Black</replace>
+      <replace>All</replace>
+      <replace>$x</replace>
+      <replace>$y</replace>
+      <replace>Ty</replace>
+      <replace>Type::</replace>
+      <replace>Type::Umpty</replace>
+      <replace>Empty</replace>
+      <replace>$this-&gt;b</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/AppBundle.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/tests/AppBundle/Controller/DefaultControllerTest.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Object/Board.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/tests/AppBundle/Object/BoardObjectTest.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/vendor/phar-io/manifest/tests/ManifestDocumentMapperTest.php" />
+        <option value="$PROJECT_DIR$/vendor/phar-io/manifest/tests/ManifestDocumentMapperTest.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Object/Type.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Ways.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Pawns.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/composer.json" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/tests/AppBundle/Entity/BoardEntityTest.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/AppBundle/Entity/BoardEntityTest.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/JeudeDames/phpunit.xml.dist" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="952" />
+    <option name="width" value="976" />
+    <option name="height" value="1038" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JeuDeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JeuDeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="JeudeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JeuDeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="JeudeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JeuDeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="JeudeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JeuDeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="JeudeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JeuDeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="JeudeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JeuDeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="JeudeDames" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="JeuDeDames" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.smarty" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../isen_forum" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Cours\Webdev\JeuDeDames\JeudeDames\src\AppBundle\Tests" />
+      <recent name="D:\Cours\Webdev\JeuDeDames\JeudeDames\src\AppBundle\Entity" />
+      <recent name="D:\Cours\Webdev\JeuDeDames\JeudeDames" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="PHPUnit.Unnamed">
+    <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner directory="$PROJECT_DIR$/JeudeDames" />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner directory="$PROJECT_DIR$/JeudeDames" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e191adb-de50-4b09-ae4f-0e218c79cf0a" name="Default" comment="" />
+      <created>1527514763723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1527514763723</updated>
+      <workItem from="1527514764932" duration="611000" />
+      <workItem from="1527515751780" duration="2384000" />
+      <workItem from="1527580300978" duration="6885000" />
+      <workItem from="1527593664013" duration="15660000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Unnamed - 2018.05.28 at 14h 09m 48s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.28 at 14h 09m 49s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.28 at 15h 23m 12s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.28 at 15h 31m 07s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.29 at 15h 11m 23s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.29 at 15h 26m 11s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.29 at 16h 18m 41s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.29 at 17h 13m 54s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.29 at 17h 13m 59s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Unnamed - 2018.05.29 at 17h 15m 21s.xml">
+      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="25575000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32760417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20750552" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#270#1282#0#PHP" expanded="false" />
+            <element signature="e#1288#2048#0#PHP" expanded="false" />
+            <element signature="e#2054#2811#0#PHP" expanded="false" />
+            <element signature="e#2817#2939#0#PHP" expanded="false" />
+            <element signature="e#2945#3234#0#PHP" expanded="false" />
+            <element signature="e#6647#6714#0#PHP" expanded="false" />
+            <element signature="e#6881#6965#0#PHP" expanded="false" />
+            <element signature="e#7019#7120#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Pawns.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="29" lean-forward="false" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="e#188#291#0#PHP" expanded="false" />
+            <element signature="e#334#399#0#PHP" expanded="false" />
+            <element signature="e#447#518#0#PHP" expanded="false" />
+            <element signature="e#561#628#0#PHP" expanded="false" />
+            <element signature="e#677#752#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Ways.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+          <folding>
+            <element signature="e#119#129#0#PHP" expanded="false" />
+            <element signature="e#1696#1770#0#PHP" expanded="false" />
+            <element signature="e#1819#1900#0#PHP" expanded="false" />
+            <element signature="e#1943#2010#0#PHP" expanded="false" />
+            <element signature="e#2059#2134#0#PHP" expanded="false" />
+            <element signature="e#2177#2250#0#PHP" expanded="false" />
+            <element signature="e#2302#2389#0#PHP" expanded="false" />
+            <element signature="e#2432#2506#0#PHP" expanded="false" />
+            <element signature="e#2555#2636#0#PHP" expanded="false" />
+            <element signature="e#2679#2746#0#PHP" expanded="false" />
+            <element signature="e#2795#2870#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding>
+            <element signature="e#270#1282#0#PHP" expanded="false" />
+            <element signature="e#1288#2048#0#PHP" expanded="false" />
+            <element signature="e#2054#2811#0#PHP" expanded="false" />
+            <element signature="e#2817#2939#0#PHP" expanded="false" />
+            <element signature="e#2945#3234#0#PHP" expanded="false" />
+            <element signature="e#6647#6714#0#PHP" expanded="false" />
+            <element signature="e#6881#6965#0#PHP" expanded="false" />
+            <element signature="e#7019#7120#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/app/config/parameters.yml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" />
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php" />
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" />
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/AppBundle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" />
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php" />
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/src/Util/PHP/AbstractPhpProcess.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/phpunit.xml" />
+    <entry file="file://$PROJECT_DIR$/vendor/phar-io/manifest/tests/ManifestDocumentMapperTest.php" />
+    <entry file="file://$PROJECT_DIR$/JeudeDames/tests/AppBundle/Object/BoardObjectTest.php" />
+    <entry file="file://$PROJECT_DIR$/JeudeDames/app/config/parameters.yml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/ide-phpunit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="252" column="0" lean-forward="false" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/vendor/phpunit/phpunit/src/Runner/Version.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1029">
+          <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/vendor/phpunit/phpunit/src/Framework/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/AppBundle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Game.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/tests/AppBundle/Controller/DefaultControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/phpunit.xml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Ways.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+          <folding>
+            <element signature="e#1696#1770#0#PHP" expanded="false" />
+            <element signature="e#1819#1900#0#PHP" expanded="false" />
+            <element signature="e#1943#2010#0#PHP" expanded="false" />
+            <element signature="e#2059#2134#0#PHP" expanded="false" />
+            <element signature="e#2177#2250#0#PHP" expanded="false" />
+            <element signature="e#2302#2389#0#PHP" expanded="false" />
+            <element signature="e#2432#2506#0#PHP" expanded="false" />
+            <element signature="e#2555#2636#0#PHP" expanded="false" />
+            <element signature="e#2679#2746#0#PHP" expanded="false" />
+            <element signature="e#2795#2870#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Pawns.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#188#291#0#PHP" expanded="false" />
+            <element signature="e#334#399#0#PHP" expanded="false" />
+            <element signature="e#447#518#0#PHP" expanded="false" />
+            <element signature="e#561#628#0#PHP" expanded="false" />
+            <element signature="e#677#752#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="108" column="35" lean-forward="false" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
+          <folding>
+            <element signature="e#270#1282#0#PHP" expanded="false" />
+            <element signature="e#1288#2048#0#PHP" expanded="false" />
+            <element signature="e#2054#2811#0#PHP" expanded="false" />
+            <element signature="e#2817#2939#0#PHP" expanded="false" />
+            <element signature="e#2945#3234#0#PHP" expanded="false" />
+            <element signature="e#6647#6714#0#PHP" expanded="false" />
+            <element signature="e#6881#6965#0#PHP" expanded="false" />
+            <element signature="e#7019#7120#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#69#0#PHP" expanded="true" />
+            <element signature="e#257#516#0#PHP" expanded="false" />
+            <element signature="e#522#751#0#PHP" expanded="false" />
+            <element signature="e#757#986#0#PHP" expanded="false" />
+            <element signature="e#992#1375#0#PHP" expanded="false" />
+            <element signature="e#1381#1675#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
