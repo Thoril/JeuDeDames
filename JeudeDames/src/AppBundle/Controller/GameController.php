@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Board;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\User;
 use AppBundle\Form\GameType;
@@ -47,7 +48,9 @@ class GameController extends Controller
 
     public function addAction(Request $request, Game $game = null)
     {
-        if($game === null){
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        if ($game === null) {
             $game = new Game();
 
             $user = $this->getUser()->getId();
@@ -64,7 +67,7 @@ class GameController extends Controller
         $form = $this->createForm(GameType::class, $game);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             //Récupération du manager
             $em = $this->getDoctrine()->getManager();
             //persist the new forum
@@ -95,6 +98,8 @@ class GameController extends Controller
         $game = $this->getDoctrine()
             ->getRepository(Game::class)
             ->find($id);
+        $board = new Board();
+        $board->initGame();
 
         $opponant = $game->getOpponant();
         $etat = $game->getState();
@@ -111,6 +116,7 @@ class GameController extends Controller
             //En attente d'un second joueur
             if ($etat == 0) {
                 //La partie est en cours
+
                 $game->setState(1);
                 //Récupération du manager
                 $em = $this->getDoctrine()->getManager();
@@ -122,6 +128,7 @@ class GameController extends Controller
 
                 return $this->render('AppBundle:Game:play.html.twig', array(
                     'game' => $game,
+                     'plateau' => $board->getBoard()
                 ));
             }
 
@@ -142,10 +149,13 @@ class GameController extends Controller
                     ]);
                 }
             }
+        }else{
+            $board->initGame();
         }
         return $this->render('AppBundle:Game:play.html.twig', array(
             'game' => $game,
             'creator'=>$creatorAff
+            'plateau' => $board->getBoard()
 
 
         ));
@@ -182,6 +192,7 @@ class GameController extends Controller
      */
     public function removeAction($id)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $game = $this->getDoctrine()
             ->getRepository(Game::class)
             ->find($id);

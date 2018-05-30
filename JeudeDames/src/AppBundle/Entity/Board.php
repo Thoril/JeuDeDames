@@ -15,22 +15,47 @@ use AppBundle\Entity\Pawns;
 class Board
 {
     public $board;
-    public $coordBoard = array(array());
+    public $coordBoard = array();
 
     public function board()
     {
 
     }
 
-    public function initBoard()
+    public function initTab2D()
     {
+        $tab = array();
         for ($x = 0; $x < 10; $x++) {
             $row = array();
             for ($y = 0; $y < 10; $y++) {
-                $row[$y] = 100262;
+                $row[$y] = null;
             }
-            $this->board[$x] = $row;
+            $tab[$x] = $row;
         }
+        return $tab;
+    }
+
+    public function initTab3D()
+    {
+        $line = array();
+        for ($x = 0; $x < 10; $x++) {
+            $row = array();
+            for ($y = 0; $y < 10; $y++) {
+                $z = array();
+                for ($i = 0; $i < 10; $i++) {
+                    $z[$i] = null;
+                }
+                $row[$y]=$z;
+            }
+            $line[$x] = $row;
+        }
+        return $line;
+    }
+
+    public function initBoard()
+    {
+        $object = new board();
+        $this->board = $object->initTab2D();
 
         //Je met une case sur deux dont lignes commençant par une case blanche
         for ($x = 0; $x < 9; $x = $x + 2) {
@@ -117,97 +142,140 @@ class Board
     public function movePawns($xInit, $yInit, $x, $y)
     {
         if ($this->board[$x][$y] == Type::Empty) {
-            if ($this->board[$x][$y] == Type::WhitePawn) {
+            if ($this->board[$xInit][$yInit] == Type::WhitePawn
+                && $xInit>$x
+            ) {
+                $this->board[$x][$y] = $this->board[$xInit][$yInit];
+                $this->free($xInit, $yInit);
 
-            } else if ($this->board[$x][$y] == Type::BlackPawn) {
-
+            } else if ($this->board[$xInit][$yInit] == Type::BlackPawn
+                && $xInit<$x
+            ) {
+                $this->board[$x][$y] = $this->board[$xInit][$yInit];
+                $this->free($xInit, $yInit);
             }
-            $this->board[$x][$y] = $this->board[$xInit][$yInit];
-            $this->board[$xInit][$yInit] = Type::Empty;
+
         }
     }
 
-    /**
-     * @return array
-     */
-    public function ableToMoveWhitePawns($x, $y)
-    {
-        $possibilities = array(array());
-        $count = 0;
-        if (($this->board[$x + 1][$y - 1] != Type::BlackPawn) && ($this->board[$x + 1][$y + 1] != Type::BlackPawn) && ($this->board[$x - 1][$y + 1] != Type::BlackPawn) && ($this->board[$x - 1][$y + 1] != Type::BlackPawn)) {
-            if ($y < 9 && $y > 0) {
-                //Cas classique
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y - 1;
-                $count++;
-
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y + 1;
-                $count++;
-            } elseif ($y == 0) {
-                //Cas sur le bord droit
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y + 1;
-                $count++;
-            } elseif ($y == 9) {
-                //Cas sur le bord gauche
-                $possibilities[$count][0] = $x - 1;
-                $possibilities[$count][1] = $y - 1;
-                $count++;
-            }
-        } else {
-            $possibilities = $this->findAllWayPawns($x, $y);
+    public function isEdible($x, $y, $case){
+        switch ($case){
+            case "hl" :
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x-1][$y-1] == Type::BlackPawn
+                    && $this->board[$x-2][$y-2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x-1][$y-1] == Type::WhitePawn
+                    && $this->board[$x-2][$y-2] == Type::Empty){
+                    return true;
+                }
+                break;
+            case "hr" :
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x-1][$y+1] == Type::BlackPawn
+                    && $this->board[$x-2][$y+2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x-1][$y+1] == Type::WhitePawn
+                    && $this->board[$x-2][$y+2] == Type::Empty){
+                    return true;
+                }
+                break;
+            case"ll":
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x+1][$y-1] == Type::BlackPawn
+                    && $this->board[$x+2][$y-2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x+1][$y-1] == Type::WhitePawn
+                    && $this->board[$x+2][$y-2] == Type::Empty){
+                    return true;
+                }
+                break;
+            case "lr":
+                if($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x+1][$y+1] == Type::BlackPawn
+                    && $this->board[$x+2][$y+2] == Type::Empty){
+                    return true;
+                }elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x+1][$y+2] == Type::WhitePawn
+                    && $this->board[$x+1][$y+2] == Type::Empty){
+                    return true;
+                }
+                break;
+            default:
+                return false;
+                break;
         }
-        return $possibilities;
+        return false;
     }
 
-    /**
-     * @return array
-     */
-    public function ableToMoveBlackPawns($x, $y)
-    {
-        $possibilities = array(array());
-        $count = 0;
-        if ((($this->board[$x + 1][$y - 1] != Type::WhitePawn) && ($this->board[$x + 2][$y - 2] != Type::Empty))
-            && (($this->board[$x + 1][$y + 1] != Type::WhitePawn) && ($this->board[$x + 2][$y + 2] != Type::Empty))
-            && (($this->board[$x - 1][$y + 1] != Type::WhitePawn) && ($this->board[$x - 2][$y + 2] != Type::Empty))
-            && (($this->board[$x - 1][$y + 1] != Type::WhitePawn)&& ($this->board[$x - 2][$y + 2] != Type::Empty)))
+    public function canEat($x, $y){
+        if ($this->isEdible($x, $y, "hl") == false
+            && $this->isEdible($x, $y, "hr")== false
+            && $this->isEdible($x, $y, "ll")== false
+            && $this->isEdible($x, $y, "lr")== false)
         {
-            if ($y < 9 && $y > 0) {
-                //Cas classique
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y - 1;
-                $count++;
-
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y + 1;
-                $count++;
-            } elseif ($y == 0) {
-                //Cas sur le bord droit
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y + 1;
-                $count++;
-            } elseif ($y == 9) {
-                //Cas sur le bord gauche
-                $possibilities[$x][0] = $x + 1;
-                $possibilities[$x][1] = $y - 1;
-                $count++;
-            }
-        } else {
-            $possibilities = $this->findAllWayPawns($x, $y);
+            return false;
+        }else{
+            return true;
         }
-        return $possibilities;
     }
 
-    public function eat($x, $y)
+    public function free($x, $y)
     {
         if ($this->board[$x][$y] != Type::Empty || Type::Forbidden) {
             $this->board[$x][$y] = Type::Empty;
         }
     }
 
-    public function isOpponant($x, $y, $color){
-        //if($color == Type::)
+    public function eat($xEater, $yEater, $xEat, $yEat){
+        //Je calcul mon mouvement a effectuer en cas de prise
+        $xMouv = (-2)*($xEater - $xEat);
+        $yMouv = (-2)*($yEater - $yEat);
+
+        //je vérifie si je peux mangé
+        if($xMouv == 2 && $yMouv == -2){
+            if($this->isEdible($xEater, $yEater, "ll")==true){
+                //si oui je mange
+                $xFutur = $xEater + $xMouv;
+                $yFutur = $yEater + $yMouv;
+
+                $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
+                $this->free($xEater, $yEater);
+                $this->free($xEat, $yEat);
+            }
+        }elseif($xMouv == 2 && $yMouv == 2){
+            if($this->isEdible($xEater, $yEater, "lr")==true){
+                $xFutur = $xEater + $xMouv;
+                $yFutur = $yEater + $yMouv;
+
+                $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
+                $this->free($xEater, $yEater);
+                $this->free($xEat, $yEat);
+            }
+        }elseif($xMouv == -2 && $yMouv == -2){
+            if($this->isEdible($xEater, $yEater, "hl")==true){
+                $xFutur = $xEater + $xMouv;
+                $yFutur = $yEater + $yMouv;
+
+                $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
+                $this->free($xEater, $yEater);
+                $this->free($xEat, $yEat);
+            }
+        }elseif($xMouv == -2 && $yMouv == 2){
+            if($this->isEdible($xEater, $yEater, "hr")==true){
+                $xFutur = $xEater + $xMouv;
+                $yFutur = $yEater + $yMouv;
+
+                $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
+                $this->free($xEater, $yEater);
+                $this->free($xEat, $yEat);
+            }
+        }
+
+
     }
 
     /**
@@ -242,5 +310,116 @@ class Board
         $this->coordBoard = $coordBoard;
     }
 
+    /**
+     * @retrun array
+     */
+    public function getSerializable(){
+        return serialize($this->board);
+    }
 
+    /**
+     * @param tableau serializé
+     */
+    public function setBoardFromSerializable($data){
+        $this->board = unserialize($data);
+    }
+
+
+    /*
+    public function ableToMovePawns($x, $y)
+    {
+        $possibilities = $this->initTab2D();
+        $count = 0;
+        if ($this->isEdible($x, $y, "hl") == false
+            || $this->isEdible($x, $y, "hr")== false
+            || $this->isEdible($x, $y, "ll")== false
+            || $this->isEdible($x, $y, "lr")== false)
+        {
+            if ($y < 9 && $y > 0) {
+                //Cas classique
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y - 1;
+                $count++;
+
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y + 1;
+            } elseif ($y == 0) {
+                //Cas sur le bord droit
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y + 1;
+            } elseif ($y == 9) {
+                //Cas sur le bord gauche
+                $possibilities[$count][0] = $x - 1;
+                $possibilities[$count][1] = $y - 1;
+            }
+        } else {
+            $result = $this->initTab3D();
+            $way = $this->initTab2D();
+            $this->findAllWayPawns($x, $y, $count, $result, $way, 0 );
+
+        }
+        return $possibilities;
+    }
+
+
+    public function findAllWayPawns($x,$y, $count, $result, $way, $countResult){
+
+        if ($this->isEdible($x, $y, "hl") == true)
+        {
+            $possibilities[$count][0] = $x;
+            $possibilities[$count][1] = $y;
+            $possibilities[$count][2] = $count;
+            $count++;
+            $this->findAllWayPawns($x-1, $y-1, $count,$result, $way, $countResult);
+        }
+        if ($this->isEdible($x, $y, "hr") == true)
+        {
+            $possibilities[$count][0] = $x;
+            $possibilities[$count][1] = $y;
+            $possibilities[$count][2] = $count;
+            $count++;
+            $this->findAllWayPawns($x-1, $y-1, $count,$result, $way, $countResult);
+        }
+        if ($this->isEdible($x, $y, "ll") == true)
+        {
+            $possibilities[$count][0] = $x;
+            $possibilities[$count][1] = $y;
+            $possibilities[$count][2] = $count;
+            $count++;
+            $this->findAllWayPawns($x-1, $y-1, $count,$result, $way, $countResult);
+        }
+        if ($this->isEdible($x, $y, "lr") == true)
+        {
+            $possibilities[$count][0] = $x;
+            $possibilities[$count][1] = $y;
+            $possibilities[$count][2] = $count;
+            $count++;
+            $this->findAllWayPawns($x-1, $y-1, $count,$result, $way, $countResult);
+        }
+        $result[$countResult] = $possibilities;
+    }
+
+    public function findLongerWayPawns($result){
+        $longerWay = $this->initTab3D();
+        $size = 0;
+        $count = 0;
+        $way = 0;
+        for ($i=0; $i<10 ; $i++) {
+            //Je compte la longueur du chemin
+            while ($result[$i][2][$way] != null){
+                $count++;
+            }
+            //si la longueur du chemin est plus grande que la longueur max précédente, je change la longueur max
+            if ($count > $size){
+                $size = $count;
+            }
+            $count = 0;
+        }
+        for ($i =0 ; $i <10 ; $i++){
+            for ($j= 0; $j< 10; $j++){
+                $longerWay[$i][$j][$way] = $result[$way];
+            }
+        }
+    }
+    */
 }
