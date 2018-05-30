@@ -141,21 +141,31 @@ class Board
 
     public function movePawns($xInit, $yInit, $x, $y)
     {
-        if ($this->board[$x][$y] == Type::Empty) {
+        if (($this->board[$x][$y] == Type::Empty)
+            && ($this->canEat($x,$y) == false)){
             if ($this->board[$xInit][$yInit] == Type::WhitePawn
-                && $xInit>$x
-            ) {
+                && $xInit>$x)
+            {
                 $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 $this->free($xInit, $yInit);
+                if($x == 0){
+                    $this->board[$x][$y] =  Type::WhiteLady;
+                }
+                return true;
 
             } else if ($this->board[$xInit][$yInit] == Type::BlackPawn
-                && $xInit<$x
-            ) {
+                && $xInit<$x)
+            {
                 $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 $this->free($xInit, $yInit);
+                if($x == 9){
+                    $this->board[$x][$y] =  Type::BlackLady;
+                }
+                return true;
             }
 
         }
+        return false;
     }
 
     public function isEdible($x, $y, $case){
@@ -278,6 +288,23 @@ class Board
 
     }
 
+    public function movement($xInit, $yInit, $xFutur, $yFutur){
+        $xMouv = $xFutur - $xInit;
+        $yMouv = $yFutur - $yInit;
+        if(($xMouv == -1 || $xMouv == 1) &&  ($yMouv == -1|| $yMouv == 1)) {
+            $this->movePawns($xInit, $yInit, $xFutur, $yFutur);
+        }elseif(($xMouv == -3 || $xMouv == 3) &&  ($yMouv == -3 || $yMouv == 3)) {
+            $this->eat($xInit, $yInit, $xInit+$xMouv, $yInit + $yMouv);
+        }
+    }
+
+    public function main($xInit, $yInit, $xFutur, $yFutur){
+        if($this->board[$xInit][$yInit] == Type::WhitePawn || Type::BlackPawn){
+            $this->movement($xInit, $yInit, $xFutur, $yFutur);
+        }else{
+
+        }
+    }
     /**
      * @return array
      */
