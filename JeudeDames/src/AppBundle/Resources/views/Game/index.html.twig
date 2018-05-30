@@ -17,6 +17,7 @@
 
     <ul class="collection">
     {% for game in games %}
+        {% if game.state == 0 %}
     <li class="collection-item avatar">
         <span class="name">
             <h5><i class="material-icons circler">people</i> {{ game.name }}</h5>
@@ -24,13 +25,13 @@
 
         <blockquote> Créee par : {{ game.creator }}</blockquote>
 
-        <a href="#" >
+        <a href="{{ path('app_game_rejoindre', {id: game.id}) }}" >
             <button class="btn waves-effect waves_light green"><i class="material-icons right">gamepad</i>
                 Rejoindre
             </button>
         </a>
     </li>
-
+    {% endif %}
     {% endfor %}
     </ul>
 

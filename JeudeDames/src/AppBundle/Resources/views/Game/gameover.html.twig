@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Game:gameover{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_USER') %}
+
+
+           <div class="row">
+
+
+               <h4> Fin de la partie  : {{ game.name }}</h4>
+
+               <h6> Créee par : {{ game.creator }}</h6>
+
+
+               <h3>Le gagnant est {{ game.winner }}</h3>
+
+               <a href="{{ path('homepage') }}" >
+               <button class="btn waves-effect waves_light light-blue darken-1">
+                       Accueil
+               </button>
+               </a>
+               
+           </div>
+
+        {% endif %}
+
+{% endblock %}
