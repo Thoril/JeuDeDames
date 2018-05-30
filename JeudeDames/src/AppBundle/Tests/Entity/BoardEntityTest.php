@@ -52,10 +52,22 @@ class BoardEntityTest extends TestCase{
         $board = new Board();
         $board->initGame();
         $board->movePawns(6,3,5,4);
+
         $my_board = $board->getBoard();
         $this->assertEquals(Type::WhitePawn, $my_board[5][4]);
         $this->assertEquals(Type::Empty, $my_board[6][3]);
     }
 
+    public function testEat(){
+        $board = new Board();
+        $board->initGame();
+        $board->movePawns(3,4,4,5);
+        $board->movePawns(6,7,5,6);
+        $board->eat(5,6,4,5);
 
+        $my_board = $board->getBoard();
+        $this->assertEquals(Type::WhitePawn, $my_board[3][4]);
+        $this->assertEquals(Type::Empty, $my_board[4][5]);
+        $this->assertEquals(Type::Empty, $my_board[5][6]);
+    }
 }
