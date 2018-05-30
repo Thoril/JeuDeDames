@@ -310,6 +310,13 @@ class Board
         $this->coordBoard = $coordBoard;
     }
 
+    /**
+     * @retrun array
+     */
+    public function getSerializable(){
+        return serialize($this->board);
+    }
+
 
 
     /*

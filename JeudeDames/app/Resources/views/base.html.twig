@@ -13,6 +13,22 @@
 
     </head>
     <body>
+    <nav>
+        <div class="nav-wrapper  teal lighten-2" >
+            <a href="{{ path('homepage') }}" class="brand-logo">Jeu de Dames</a>
+            <ul class="right hide-on-med-and-down">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a href="{{ path('fos_user_security_logout') }}"> Déconnexion </a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">Mon profil </a></li>
+                {% else %}
+                    <li><a href="{{ path('fos_user_security_login') }}">Connexion </a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
         {% block body %}{% endblock %}
 
         <!--Import jQuery before materialize.js-->

@@ -21,7 +21,9 @@ framework:
     #serializer: { enable_annotations: true }
     templating:
         engines: ['twig']
-    default_locale: '%locale%'
+    default_locale: 'fr'
+    translator:
+            fallbacks: ['fr']
     trusted_hosts: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
@@ -66,7 +68,7 @@ swiftmailer:
     auth_mode: login
     host:      "%mailer_host%"
     encryption: tls
-    port:      587
+    port: 587
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -81,7 +83,7 @@ fos_user:
         address: "thomas.artru@isen.yncrea.fr"
         sender_name: "FOSBundle"
     registration:
-        confirmation:
+         confirmation:
             enabled: true
             from_email:
                 address: "thomas.artru@isen.yncrea.fr"
