@@ -90,12 +90,10 @@ class GameController extends Controller
         echo" E0 : $etat  - ";
         echo"OP0 : $opponant  -";
         if ($opponant != null) {
+            //En attente d'un second joueur
             if ($etat == 0) {
-                //En attente d'un second joueur
-
                 //La partie est en cours
                 $game->setState(1);
-
                 //Récupération du manager
                 $em = $this->getDoctrine()->getManager();
                 //persist the new forum
@@ -103,16 +101,17 @@ class GameController extends Controller
 
                 //flush entity manager
                 $em->flush();
-                echo "E1 : $etat  -";
-
 
                 return $this->render('AppBundle:Game:play.html.twig', array(
                     'game' => $game,
                 ));
             }
+            //La partie est terminée
             else if($etat == 2){
                 if($winner != null){
-                    return $this->redirectToRoute('homepage');
+                    return $this->redirectToRoute('app_game_gameover', [
+                        'id'=>$id
+                    ]);
                 }
             }
         }
@@ -178,9 +177,7 @@ class GameController extends Controller
         $user = $this->getUser()->getId();
         $creator = $game->getCreator();
         $opponant = $game->getOpponant();
-        echo"user : $user  - ";
-        echo"creator : $creator  -";
-        echo"opponant : $opponant";
+
         if($user == $creator){
             $game->setWinner($opponant);
         }
@@ -198,7 +195,24 @@ class GameController extends Controller
         //flush entity manager
         $em->flush();
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('app_game_gameover', [
+            'id'=>$id
+        ]);
 
+    }
+
+    /**
+     * @Route("/gameover{id}", requirements={"id" : "\d+"}, name="app_game_gameover")
+     */
+    public function gameoverAction($id){
+
+        $game = $this->getDoctrine()
+            ->getRepository(Game::class)
+            ->find($id);
+
+        return $this->render('AppBundle:Game:gameover.html.twig', array(
+            'game' => $game
+
+        ));
     }
 }
