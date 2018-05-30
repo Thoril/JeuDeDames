@@ -8,13 +8,80 @@
     <blockquote> Créee par : {{ game.creator }}</blockquote>
 
 
-    {% if is_granted('ROLE_USER') %}
-        <a href="{{ path('app_game_remove', {id: game.id}) }}" >
-            <button class="btn waves-effect waves_light  red darken-1">
-                Annuler <i class="material-icons right">clear</i>
-            </button>
-        </a>
+    <a href="{{ path('app_game_remove', {id: game.id}) }}">
+        <button class="btn waves-effect waves_light  red darken-1">
+            Annuler <i class="material-icons right">clear</i>
+        </button>
+    </a>
+   <style type="text/css">
+        #white
+        {
+        background-color: white;
+            height: 60px;
+            width: 60px;
+        }
+        #brown
+        {
+        background-color: #763709;
+            height: 60px;
+            width: 60px;
+        }
+        #tablo{
+            margin-left:auto;
+            margin-right:auto;
+            border:1px solid #000000;
+            width: 20cm;
 
-    {% endif %}
+        }
+        #tablo tr{
+            border:1px solid #000000;
+            height: 2cm;
+            width: 2cm;
+
+        }
+        #tablo td{
+            border:1px solid #000000;
+            text-align:center;
+        }
+       #pion{
+           height: 1cm;
+           width: 1cm;
+       }
+
+    </style>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+
+    <table id="tablo">
+        {% for lines in plateau %}
+            <tr>
+                {% for case in  lines %}
+                    {% if case == 1 %}
+                        <td class="brown">  <img id="pion" src="https://image.ibb.co/g8APay/cercle_plein.png" draggable="true" ondragstart="drag(event)"></td>
+                    {% elseif case == 2 %}
+                        <td class="brown">  <img id="pion" src="https://image.ibb.co/dcuT2d/round.png" draggable="true" ondragstart="drag(event)"></td>
+                    {% elseif case == 0 %}
+                        <td class="brown" id="vide" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    {% else %}
+                        <td class="white"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
 
 {% endblock %}

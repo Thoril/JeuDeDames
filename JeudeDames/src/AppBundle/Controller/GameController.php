@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Board;
 use AppBundle\Entity\Game;
 use AppBundle\Form\GameType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,7 +21,7 @@ class GameController extends Controller
     public function indexAction()
     {
         return $this->render('AppBundle:Game:index.html.twig', array(
-            'games' =>$this->getDoctrine()
+            'games' => $this->getDoctrine()
                 ->getRepository(Game::class)
                 ->findAll()
         ));
@@ -32,7 +33,9 @@ class GameController extends Controller
 
     public function addAction(Request $request, Game $game = null)
     {
-        if($game === null){
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        if ($game === null) {
             $game = new Game();
 
             $user = $this->getUser()->getId();
@@ -49,7 +52,7 @@ class GameController extends Controller
         $form = $this->createForm(GameType::class, $game);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             //Récupération du manager
             $em = $this->getDoctrine()->getManager();
             //persist the new forum
@@ -61,7 +64,7 @@ class GameController extends Controller
             $id = $game->getId();
 
             return $this->redirectToRoute('app_game_wait', [
-                'id'=>$id
+                'id' => $id
             ]);
         }
 
@@ -74,12 +77,31 @@ class GameController extends Controller
     /**
      * @Route("/wait{id}", requirements={"id": "\d+"}, name="app_game_wait")
      */
-    public function waitAction($id){
+    public function waitAction($id)
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $game = $this->getDoctrine()
+            ->getRepository(Game::class)
+            ->find($id);
+
+        if ($game->getBoard() == null) {
+            $board = new Board();
+            $board->initGame();
+            $game->setBoard($board->getSerializable());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($game);
+            $em->flush();
+        }else{
+            $board = new Board();
+            $board->setBoard(unserialize($game->getBoard()));
+        }
+
 
         return $this->render('AppBundle:Game:wait.html.twig', array(
             'game' => $this->getDoctrine()
                 ->getRepository(Game::class)
-                ->find($id)
+                ->find($id),
+            'plateau' => $board->getBoard()
         ));
     }
 
@@ -88,6 +110,7 @@ class GameController extends Controller
      */
     public function removeAction($id)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $game = $this->getDoctrine()
             ->getRepository(Game::class)
             ->find($id);
@@ -97,14 +120,7 @@ class GameController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('app_game_index', [
-            'id'=>$id
+            'id' => $id
         ]);
     }
-
-
-
-
-
-
-
 }
