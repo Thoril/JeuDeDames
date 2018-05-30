@@ -63,10 +63,10 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
-    auth_mode: "%mailer_auth_mode%"
+    auth_mode: login
     host:      "%mailer_host%"
-    encryption: "%mailer_encryption%"
-    port:      "%mailer_port%"
+    encryption: tls
+    port:      587
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -80,8 +80,6 @@ fos_user:
     from_email:
         address: "thomas.artru@isen.yncrea.fr"
         sender_name: "FOSBundle"
-    service:
-        mailer: fos_user.mailer.twig_swift
     registration:
         confirmation:
             enabled: true

@@ -1,4 +1,7 @@
 <?php
+namespace AppBundle\Entity;
+
+
 /**
 
  * Created by PhpStorm.
@@ -11,17 +14,17 @@
 
  */
 
-class Type extends SplEnum{
+class Type {
 
     const Forbidden = -1;
 
-    const Upmty = 0;
+    const Empty = 0;
 
-    const WhitePawn = 11;
+    const WhitePawn = 1;
 
-    const BlackPawn = 21;
+    const BlackPawn = 2;
 
-    const WhiteLady = 12;
+    const WhiteLady = 11;
 
     const BlackLady = 22;
 
