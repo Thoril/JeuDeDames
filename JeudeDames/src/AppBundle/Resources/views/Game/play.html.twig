@@ -51,8 +51,15 @@
             ev.preventDefault();
             var data = ev.dataTransfer.getData("pion");
             ev.target.appendChild(document.getElementById(data));
-            document.getElementById('affichage').innerHTML = "from" + data + "to" + ev.target(id);
-            window.location.href = 'http://www.google.fr/'
+            var url = '{{ path('app_game_move') }}';
+            var end_point = ev.target.id;
+            var form = $('<form action="'+url+'" method="post">' +
+                    '<input type="text" name="start_position" value="' + data + '"/>' +
+                    '<input type="text" name="end_position" value="' + end_point + '"/>'+
+                    '<input type="text" id="id" name="id" value="' + {{ game.id }} + '"/>'+
+                    '</form>');
+            $('body').append(form);
+            form.submit();
         }
     </script>
 
@@ -74,20 +81,23 @@
             <table id="tablo">
                 {% set x = 0 %}
                 {% set y = 0 %}
+                {% set id = 0 %}
                 {% for lines in plateau %}
                     <tr>
                         {% for case in  lines %}
                             {% if case == 1 %}
-                                <td id="c{{ y}}{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)">  <img id="p{{ y}}{{ x }}" src="https://image.ibb.co/g8APay/cercle_plein.png" draggable="true" ondragstart="drag(event)" height="40px" width="40px"></td>
+                                <td id="c{{ id }}y{{ y}}x{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)">  <img id="p{{ id }}y{{ y}}x{{ x }}" src="https://image.ibb.co/g8APay/cercle_plein.png" draggable="true" ondragstart="drag(event)" height="40px" width="40px"></td>
                             {% elseif case == 2 %}
-                                <td id="c{{ y}}{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)">  <img id="p{{ y }}{{ x }}" src="https://image.ibb.co/dcuT2d/round.png" draggable="true" ondragstart="drag(event)" height="40px" width="40px"></td>
+                                <td id="c{{ id }}y{{ y}}x{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)">  <img id="p{{ id }}y{{ y }}x{{ x }}" src="https://image.ibb.co/dcuT2d/round.png" draggable="true" ondragstart="drag(event)" height="40px" width="40px"></td>
                             {% elseif case == 0 %}
-                                <td id="c{{ y}}{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                <td id="c{{ id }}y{{ y}}x{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                             {% else %}
-                                <td id="c{{ y}}{{ x }}" class="white"></td>
+                                <td id="c{{ id }}y{{ y}}x{{ x }}" class="white"></td>
                             {% endif %}
+                            {% set id = id+1 %}
                             {% set x=x+1 %}
                         {% endfor %}
+                        {% set x = 0 %}
                         {% set y = y+1 %}
                     </tr>
                 {% endfor %}

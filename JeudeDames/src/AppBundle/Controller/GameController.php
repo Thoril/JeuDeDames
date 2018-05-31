@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Board;
 use AppBundle\Entity\Game;
 use AppBundle\Form\GameType;
+use Psr\Log\NullLogger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -213,8 +214,8 @@ class GameController extends Controller
     }
 
     /**
-     * @Route("/gameover{id}", requirements={"id" : "\d+"}, name="app_game_gameover")
-     */
+ * @Route("/gameover{id}", requirements={"id" : "\d+"}, name="app_game_gameover")
+ */
     public function gameoverAction($id){
 
         $game = $this->getDoctrine()
@@ -223,6 +224,24 @@ class GameController extends Controller
 
         return $this->render('AppBundle:Game:gameover.html.twig', array(
             'game' => $game
+
+        ));
+    }
+
+    /**
+     * @Route("/play/move", name="app_game_move")
+     */
+    public function moveAction(){
+        $id = isset($_POST['id']) ? $_POST['id'] : NULL;
+        if($id != NULL) {
+            $game = $this->getDoctrine()
+                ->getRepository(Game::class)
+                ->find($id);
+
+            $board = new Board();
+        }
+        return $this->render('AppBundle:Game:move.html.twig', array(
+            'id' => $id
 
         ));
     }
