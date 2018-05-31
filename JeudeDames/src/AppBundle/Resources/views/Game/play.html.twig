@@ -76,9 +76,6 @@
                 </button>
             </a>
         {% else %}
-
-            <h4> Lancement de la partie : {{ game.name }}</h4>
-            <blockquote> Créee par : {{ creator }}</blockquote>
             {% if  app.user.id == game.opponant %}
             {% if game.current_player == 6 %}
                 <h3>C'est à votre tour de jouer </h3>
@@ -152,7 +149,5 @@
                 </button>
             </a>
         {% endif %}
-
     {% endif %}
-
 {% endblock %}
