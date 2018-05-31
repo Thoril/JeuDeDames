@@ -154,7 +154,7 @@ class GameController extends Controller
             }
         }else{
             $board->initGame();
-            $board->setPlayer(6);
+            $game->setCurrent_Player(5);
             $game->setBoard($board->getSerializable());
             $em = $this->getDoctrine()->getManager();
             //persist the new forum
@@ -304,7 +304,6 @@ class GameController extends Controller
             var_dump($ydep);
             var_dump($xarr);
             var_dump($yarr);
-            var_dump($board->getBoard());
             $game->setCurrent_Player($board->getPlayer());
             $game->setBoard($board->getSerializable());
             $em = $this->getDoctrine()->getManager();
