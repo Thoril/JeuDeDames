@@ -297,7 +297,12 @@ class GameController extends Controller
             $ydep = substr($depart,1,1);
             $xarr = substr($arrive,2,1);
             $yarr = substr($arrive,1,1);
-
+            if($xdep == 'y'){
+                $xdep == 0;
+            }
+            if($xarr == 'y'){
+                $xarr == 0;
+            }
             $retour = $board->main(intval($ydep), intval($xdep),intval($yarr), intval($xarr));
             var_dump($retour);
             var_dump($xdep);

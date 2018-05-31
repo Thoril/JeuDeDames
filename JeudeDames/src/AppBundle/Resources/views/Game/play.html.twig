@@ -78,10 +78,23 @@
         {% else %}
 
             <h4> Lancement de la partie : {{ game.name }}</h4>
-            <h3>creator {{ game.creator }}</h3>
-            <h3>opponent {{ game.opponant }}</h3>
-            <h3>moi {{ app.user.id }}</h3>
             <blockquote> Créee par : {{ creator }}</blockquote>
+            {% if  app.user.id == game.opponant %}
+            {% if game.current_player == 6 %}
+                <h3>C'est à votre tour de jouer </h3>
+
+            {% else%}
+                <h3>C'est le tour de votre adversaire </h3>
+                {% endif %}
+                {% endif %}
+            {% if app.user.id == game.creator  %}
+                {% if game.current_player == 5 %}
+
+                <h3>C'est à votre tour de jouer </h3>
+                    {% else %}
+                    <h3>C'est le tour de votre adversaire</h3>
+            {% endif %}
+                {% endif %}
             <table id="tablo">
                 {% set x = 0 %}
                 {% set y = 0 %}
