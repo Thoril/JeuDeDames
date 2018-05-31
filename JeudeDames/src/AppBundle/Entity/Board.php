@@ -343,6 +343,7 @@ class Board
                 $this->changePlayer();
             }
         }
+        return "OK";
     }
 
     public function main($xInit, $yInit, $xFutur, $yFutur)
@@ -356,6 +357,7 @@ class Board
 
             }
         }
+        return "KO";
     }
 
     public function error($i){
