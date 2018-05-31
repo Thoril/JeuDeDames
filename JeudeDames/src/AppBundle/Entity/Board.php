@@ -357,6 +357,7 @@ class Board
 
             }
         }
+        return "KO";
     }
 
     public function error($i){
