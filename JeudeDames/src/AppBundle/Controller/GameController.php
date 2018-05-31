@@ -113,7 +113,9 @@ class GameController extends Controller
         $creatorAff = $findCreator->getUsername();
 
         if ($opponant != null) {
-            $board->initGame();
+            //var_dump($game->getBoard());
+            $board->setBoardFromSerializable($game->getBoard());
+            //var_dump($board->getBoard());
             //En attente d'un second joueur
             if ($etat == 0) {
                 //La partie est en cours
@@ -152,6 +154,12 @@ class GameController extends Controller
             }
         }else{
             $board->initGame();
+            $game->setBoard($board->getSerializable());
+            $em = $this->getDoctrine()->getManager();
+            //persist the new forum
+            $em->persist($game);
+            //flush entity manager
+            $em->flush();
         }
         return $this->render('AppBundle:Game:play.html.twig', array(
             'game' => $game,
@@ -266,22 +274,36 @@ class GameController extends Controller
             'game' => $game,
             'username' =>$winner,
             'creator'=>$creator
-
-
         ));
     }
-
     /**
      * @Route("/play/move", name="app_game_move")
      */
     public function moveAction(){
         $id = isset($_POST['id']) ? $_POST['id'] : NULL;
+        $depart = isset($_POST['start_position']) ? $_POST['start_position'] : NULL;
+        $arrive = isset($_POST['end_position']) ? $_POST['end_position'] : NULL;
         if($id != NULL) {
             $game = $this->getDoctrine()
                 ->getRepository(Game::class)
                 ->find($id);
 
             $board = new Board();
+            $board->setBoardFromSerializable($game->getBoard());
+
+            $xdep = substr($depart,3,1);
+            $ydep = substr($depart,2,1);
+            $xarr = substr($arrive,3,1);
+            $yarr = substr($arrive,2,1);
+            $board->setPlayer(5);
+            $board->main(intval($xdep), intval($ydep),intval($xarr), intval($yarr));
+            $game->setBoard($board->getSerializable());
+            $em = $this->getDoctrine()->getManager();
+            //persist the new forum
+            $em->persist($game);
+            //flush entity manager
+            $em->flush();
+
         }
         return $this->render('AppBundle:Game:move.html.twig', array(
             'id' => $id

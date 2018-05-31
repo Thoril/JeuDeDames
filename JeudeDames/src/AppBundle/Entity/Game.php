@@ -52,6 +52,13 @@ class Game
     /**
      * @var int
      *
+     * @ORM\Column(name="current_player", type="integer", nullable=true)
+     */
+    private $current_player;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="state", type="integer")
      */
     private $state;
@@ -213,5 +220,7 @@ class Game
     {
         return $this->board;
     }
+
+    
 }
 
