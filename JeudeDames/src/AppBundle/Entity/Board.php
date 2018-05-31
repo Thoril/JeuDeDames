@@ -334,6 +334,9 @@ class Board
             $yEat = 1/2*($yFutur-$yInit)+$yInit;
             $this->eat($xInit, $yInit, $xEat, $yEat);
             //si le joueur ne peut plus jouer, c'est au tour de l'autre joueur
+            if ($this->canEat($xFutur, $yFutur)==false) {
+                $this->changePlayer();
+            }
         }
         return $resu;
     }
