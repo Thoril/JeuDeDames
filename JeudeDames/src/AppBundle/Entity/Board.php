@@ -131,32 +131,24 @@ class Board
         $this->initBlack();
     }
 
-    public function beLady($x, $y)
-    {
-        if (($this->getCase($x,$y) == Type::BlackPawn) && $x == 9) {
-            $this->board[$x][$y] = Type::WhiteLady;
-            return true;
-        } elseif (($this->getCase($x,$y) == Type::WhitePawn) && $x == 0) {
-            $this->board[$x][$y] = Type::BlackLady;
-            return true;
-        }
-        return 1;
-    }
-
     public function movePawns($xInit, $yInit, $x, $y)
     {
         if (($this->getCase($x,$y) == Type::Empty)
-            && ($this->canEat($x, $y) == false)) {
+            && ($this->canEat($x, $y) == false)
+            &&$this->player == Type::whitePlayer) {
             if ($this->board[$xInit][$yInit] == Type::WhitePawn
                 && $xInit > $x
                 && $this->player == Type::whitePlayer) {
                 if ($x == 0) {
                     $this->board[$x][$y] = Type::WhiteLady;
-
                 } else {
                     $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 }
                 $this->free($xInit, $yInit);
+                $resu = $this->changePlayer();
+                if ($resu != true){
+                    return $this->error($resu);
+                }
                 return true;
 
             } else if ($this->board[$xInit][$yInit] == Type::BlackPawn
@@ -169,6 +161,10 @@ class Board
                     $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 }
                 $this->free($xInit, $yInit);
+                $resu = $this->changePlayer();
+                if ($resu != true){
+                    return $this->error($resu);
+                }
                 return true;
             }
 
@@ -321,6 +317,7 @@ class Board
 
     public function movement($xInit, $yInit, $xFutur, $yFutur)
     {
+        $resu = null;
         $xMouv = $xFutur - $xInit;
         $yMouv = $yFutur - $yInit;
         if (($xMouv == -1 || $xMouv == 1) && ($yMouv == -1 || $yMouv == 1)) {
@@ -329,21 +326,15 @@ class Board
                 if ($resu != true){
                     return $this->error($resu);
                 }
-                $resu = $this->changePlayer();
-                if ($resu != true){
-                    return $this->error($resu);
-                }
+                $resu = "Test";
             }
         } elseif (($xMouv == -2 || $xMouv == 2) && ($yMouv == -2 || $yMouv == 2)) {
             $xEat = 1/2*($xFutur-$xInit)+$xInit;
             $yEat = 1/2*($yFutur-$yInit)+$yInit;
             $this->eat($xInit, $yInit, $xEat, $yEat);
             //si le joueur ne peut plus jouer, c'est au tour de l'autre joueur
-            if ($this->canEat($xFutur, $yFutur)==false) {
-                $this->changePlayer();
-            }
         }
-        return $this->board[$xFutur][$yFutur];
+        return $resu;
     }
 
     public function main($xInit, $yInit, $xFutur, $yFutur)
