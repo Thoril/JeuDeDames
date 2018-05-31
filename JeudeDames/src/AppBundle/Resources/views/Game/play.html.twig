@@ -1,8 +1,13 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}AppBundle:Game:play{% endblock %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="../../css/loading-bar.css"/>
+    <script type="text/javascript" src="../../javascript/loading-bar.js"></script>
+{% endblock %}
 
-{% block body %}
+    {% block body %}
+
     <style type="text/css">
         #white
         {
@@ -58,6 +63,7 @@
 
     {% if is_granted('ROLE_USER') %}
         {% if game.state == 0 %}
+
             <h4> En attente d'un joueur pour la partie : {{ game.name }}</h4>
             <blockquote> Créee par : {{ creator }}</blockquote>
 
@@ -66,6 +72,8 @@
                     Annuler <i class="material-icons right">clear</i>
                 </button>
             </a>
+
+
         {% else %}
 
             <h4> Lancement de la partie : {{ game.name }}</h4>

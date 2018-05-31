@@ -24,5 +24,7 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="loading-bar.js" level="project" />
+    <orderEntry type="library" name="jquery-2.2.4" level="application" />
   </component>
 </module>

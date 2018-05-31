@@ -2,8 +2,11 @@
 
 {% block title %}AppBundle:Game:index{% endblock %}
 
+
 {% block body %}
 
+    <script language = "javascript"
+            src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 
     {% if is_granted('ROLE_USER') %}
@@ -16,9 +19,11 @@
         </a>
 
 
-    <ul class="collection">
-    {% for game in games %}
+
+       <ul class="collection">
+        {% for game in games %}
         {% if game.state == 0 %}
+
 
     <li class="collection-item avatar">
         <span class="name">
@@ -33,7 +38,7 @@
             {%  endfor %}
         </blockquote>
 
-        <a href="{{ path('app_game_rejoindre', {id: game.id}) }}" >
+        <a href="  {{ path('app_game_rejoindre', {id: game.id}) }}" >
             <button class="btn waves-effect waves_light green"><i class="material-icons right">gamepad</i>
                 Rejoindre
             </button>

@@ -8,6 +8,7 @@ use AppBundle\Entity\User;
 use AppBundle\Form\GameType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -21,25 +22,25 @@ class GameController extends Controller
      */
     public function indexAction()
     {
-        $game = $this->getDoctrine()
-            ->getRepository(Game::class)
-            ->findAll();
-        $creatorAff = array();
-        foreach($game as $value) {
-            $findCreator = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($value->getCreator());
 
-            array_push($creatorAff, $findCreator);
-           // var_dump($creatorAff);
-        }
-        //var_dump($creatorAff);
+            $game = $this->getDoctrine()
+                ->getRepository(Game::class)
+                ->findAll();
+            $creatorAff = array();
 
-        return $this->render('AppBundle:Game:index.html.twig', array(
-            'games' =>$game,
-            'creator'=>$creatorAff
+            foreach ($game as $value) {
+                $findCreator = $this->getDoctrine()
+                    ->getRepository(User::class)
+                    ->find($value->getCreator());
 
-        ));
+                array_push($creatorAff, $findCreator);
+            }
+
+                return $this->render('AppBundle:Game:index.html.twig', array(
+                    'games' => $game,
+                    'creator' => $creatorAff
+
+                ));
     }
 
     /**
@@ -116,13 +117,11 @@ class GameController extends Controller
             //En attente d'un second joueur
             if ($etat == 0) {
                 //La partie est en cours
-
                 $game->setState(1);
                 //Récupération du manager
                 $em = $this->getDoctrine()->getManager();
                 //persist the new forum
                 $em->persist($game);
-
                 //flush entity manager
                 $em->flush();
 
@@ -136,7 +135,8 @@ class GameController extends Controller
             if($etat == 1){
                 return $this->render('AppBundle:Game:play.html.twig', array(
                     'game' => $game,
-                    'creator'=>$creatorAff
+                    'creator'=>$creatorAff,
+                    'plateau' => $board->getBoard()
                 ));
 
             }
@@ -154,7 +154,7 @@ class GameController extends Controller
         }
         return $this->render('AppBundle:Game:play.html.twig', array(
             'game' => $game,
-            'creator'=>$creatorAff
+            'creator'=>$creatorAff,
             'plateau' => $board->getBoard()
 
 
