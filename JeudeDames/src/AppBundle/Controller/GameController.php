@@ -36,7 +36,7 @@ class GameController extends Controller
 
                 array_push($creatorAff, $findCreator);
             }
-
+                
                 return $this->render('AppBundle:Game:index.html.twig', array(
                     'games' => $game,
                     'creator' => $creatorAff
