@@ -134,8 +134,8 @@ class Board
     public function movePawns($xInit, $yInit, $x, $y)
     {
         if (($this->getCase($x,$y) == Type::Empty)
-            && ($this->canEat($x, $y) == false)
-            &&$this->player == Type::whitePlayer) {
+            && ($this->canEat($xInit, $yInit) == false)) {
+
             if ($this->board[$xInit][$yInit] == Type::WhitePawn
                 && $xInit > $x
                 && $this->player == Type::whitePlayer) {
@@ -145,10 +145,8 @@ class Board
                     $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 }
                 $this->free($xInit, $yInit);
-                $resu = $this->changePlayer();
-                if ($resu != true){
-                    return $this->error($resu);
-                }
+                $this->changePlayer();
+
                 return true;
 
             } else if ($this->board[$xInit][$yInit] == Type::BlackPawn
@@ -161,10 +159,7 @@ class Board
                     $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 }
                 $this->free($xInit, $yInit);
-                $resu = $this->changePlayer();
-                if ($resu != true){
-                    return $this->error($resu);
-                }
+                $this->changePlayer();
                 return true;
             }
 
@@ -260,7 +255,13 @@ class Board
                 $xFutur = $xEater + $xMouv;
                 $yFutur = $yEater + $yMouv;
 
-                $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
+                if($xFutur == 0 && $this->player==Type::whitePlayer){
+                    $this->board[$xFutur][$yFutur] = Type::WhiteLady;
+                }elseif ($xFutur == 9 && $this->player==Type::blackPlayer){
+                    $this->board[$xFutur][$yFutur] = Type::BlackLady;
+                }else{
+                    $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
+                }
                 $this->free($xEater, $yEater);
                 $this->free($xEat, $yEat);
 
@@ -343,13 +344,15 @@ class Board
         if ($this->player % 2 == $this->board[$xInit][$yInit] % 2) {
             if ($this->board[$xInit][$yInit] == Type::WhitePawn || Type::BlackPawn) {
                 $resu = $this->movement($xInit, $yInit, $xFutur, $yFutur);
-                return $resu;
+                return $this->getCase($xFutur, $yFutur);
             } else {
 
             }
         }
         return "KO";
     }
+
+
 
     public function error($i){
         switch ($i){

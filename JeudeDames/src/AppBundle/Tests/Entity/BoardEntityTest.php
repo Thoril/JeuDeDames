@@ -58,6 +58,7 @@ class BoardEntityTest extends TestCase{
         $my_board = $board->getBoard();
         $this->assertEquals(Type::WhitePawn, $my_board[5][4]);
         $this->assertEquals(Type::Empty, $my_board[6][3]);
+        $this->assertEquals(Type::blackPlayer, $board->getPlayer());
 
         //test pour un pion noir
         $board->setPlayer(Type::blackPlayer);
