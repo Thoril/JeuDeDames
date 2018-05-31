@@ -36,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="move.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="move.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Game/move.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -46,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Board.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Board.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="229" column="21" lean-forward="false" selection-start-line="229" selection-start-column="21" selection-end-line="229" selection-end-column="21" />
+            <state relative-caret-position="456">
+              <caret line="356" column="0" lean-forward="true" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -100,11 +100,11 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/gameover.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Board.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/play.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Game.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/GameController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/move.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Board.php" />
       </list>
     </option>
   </component>
@@ -327,12 +327,12 @@
       <workItem from="1527516271911" duration="6523000" />
       <workItem from="1527579381547" duration="7907000" />
       <workItem from="1527594284665" duration="16827000" />
-      <workItem from="1527746001228" duration="9724000" />
+      <workItem from="1527746001228" duration="9850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58989000" />
+    <option name="totallyTimeSpent" value="59115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -673,14 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Board.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="229" column="21" lean-forward="false" selection-start-line="229" selection-start-column="21" selection-end-line="229" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Game.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -721,6 +713,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="356" column="0" lean-forward="true" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
           <folding />
         </state>
       </provider>

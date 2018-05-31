@@ -343,7 +343,7 @@ class Board
                 $this->changePlayer();
             }
         }
-        return "OK";
+        return $this->board[$xFutur][$yFutur];
     }
 
     public function main($xInit, $yInit, $xFutur, $yFutur)
