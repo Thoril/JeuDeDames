@@ -9,6 +9,7 @@ use AppBundle\Form\GameType;
 use Psr\Log\NullLogger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -22,25 +23,25 @@ class GameController extends Controller
      */
     public function indexAction()
     {
-        $game = $this->getDoctrine()
-            ->getRepository(Game::class)
-            ->findAll();
-        $creatorAff = array();
-        foreach($game as $value) {
-            $findCreator = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($value->getCreator());
 
-            array_push($creatorAff, $findCreator);
-           // var_dump($creatorAff);
-        }
-        //var_dump($creatorAff);
+            $game = $this->getDoctrine()
+                ->getRepository(Game::class)
+                ->findAll();
+            $creatorAff = array();
 
-        return $this->render('AppBundle:Game:index.html.twig', array(
-            'games' =>$game,
-            'creator'=>$creatorAff
+            foreach ($game as $value) {
+                $findCreator = $this->getDoctrine()
+                    ->getRepository(User::class)
+                    ->find($value->getCreator());
 
-        ));
+                array_push($creatorAff, $findCreator);
+            }
+
+                return $this->render('AppBundle:Game:index.html.twig', array(
+                    'games' => $game,
+                    'creator' => $creatorAff
+
+                ));
     }
 
     /**

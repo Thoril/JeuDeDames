@@ -2,23 +2,34 @@
 
 {% block title %}AppBundle:Game:index{% endblock %}
 
+
 {% block body %}
 
-
-
     {% if is_granted('ROLE_USER') %}
-        <p>Bienvenue {{ app.user.username }}</p>
-        <h3> Liste des parties en attente d'un joueur</h3>
-            <a href="{{ path('app_game_add') }}" >
-            <button class="btn waves-effect waves_light  light-blue darken-1">
-                Créer une nouvelle partie <i class="material-icons right">add</i>
-            </button>
-        </a>
+        <script>
+            function reFresh() {
+                location.reload(true)
+            }
+            window.setInterval("reFresh()",5000);
+        </script>
+
+        <div class="row">
+            <div class="col s6 offset-s5">
+        <h3 >Bienvenue {{ app.user.username }}</h3>
+            </div>
+
+            <div class="col s7 offset-s4">
+        <h4> Liste des parties en attente d'un second joueur</h4>
+            </div>
+
+        </div>
 
 
-    <ul class="collection">
-    {% for game in games %}
+
+       <ul class="collection">
+        {% for game in games %}
         {% if game.state == 0 %}
+
 
     <li class="collection-item avatar">
         <span class="name">
@@ -33,7 +44,7 @@
             {%  endfor %}
         </blockquote>
 
-        <a href="{{ path('app_game_rejoindre', {id: game.id}) }}" >
+        <a href="  {{ path('app_game_rejoindre', {id: game.id}) }}" >
             <button class="btn waves-effect waves_light green"><i class="material-icons right">gamepad</i>
                 Rejoindre
             </button>
@@ -42,6 +53,16 @@
     {% endif %}
     {% endfor %}
     </ul>
+
+        <div class="row">
+        <div class="col s1 offset-s4"></div>
+        <a href="{{ path('app_game_add') }}" >
+            <button class="btn waves-effect waves_light  light-blue darken-1">
+                Créer une nouvelle partie <i class="material-icons right">add</i>
+            </button>
+        </a>
+        </div>
+        </div>
 
     {% else %}
         <h3>Créez vous un compte pour pouvoir jouer au jeu de dames</h3>

@@ -4,23 +4,22 @@
 
 {% block body %}
 
+    <div class="row">
+        <div class="col s5 offset-s4">
     <h3> Créer une nouvelle partie</h3>
+        </div>
+    </div>
     {% if is_granted('ROLE_USER') %}
     <div class="row">
+        <div class="col s5 offset-s3">
         {{ form_start(form) }}
         {{ form_widget(form) }}
-       <!-- <form action ="" method="post" class="cols12">
-            <div class="row">
-                <div class="input-field col s3">
-                    <input id="name" type="text" name="name" class="validate">
-                    <label for="name">Nom de la partie</label>
-                </div>
-            </div>-->
-
-      <div class="row col s1 offset-s1">
-                    <button class="btn waves-effect waves-light light-blue darken-1" type="submit" name="action"><i class="material-icons left">add</i>Créer </button>
-                </div>
-       <!-- </form> -->
+        </div>
+      <div class="row">
+          <div class="col s5 offset-s5">
+          <button class="btn waves-effect waves-light light-blue darken-1" type="submit" name="action"><i class="material-icons left">add</i>Créer </button>
+      </div>
+      </div>
         {{ form_end(form) }}
     </div>
 {% endif %}
