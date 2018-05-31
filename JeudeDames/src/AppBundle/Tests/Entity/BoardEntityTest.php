@@ -148,5 +148,14 @@ class BoardEntityTest extends TestCase{
         //test changement du joueur
         $this->assertEquals(Type::blackPlayer, $board->getPlayer());
 
+        //test mange pion blanc par pion noir
+        $board->main(2,5,4,3);
+        $my_board = $board->getBoard();
+        $this->assertEquals(Type::BlackPawn, $my_board[4][3]);
+        $this->assertEquals(Type::Empty, $my_board[3][4]);
+        $this->assertEquals(Type::Empty, $my_board[2][5]);
+        //test changement du joueur
+        $this->assertEquals(Type::whitePlayer, $board->getPlayer());
+
     }
 }
