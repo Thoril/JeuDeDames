@@ -3,10 +3,11 @@
 {% block title %}AppBundle:Game:play{% endblock %}
 {% block head %}
     <script>
-    function reFresh() {
-    location.reload(true)
-    }
-    window.setInterval("reFresh()",5000);
+        function reFresh() {
+            location.reload(true)
+        }
+
+        window.setInterval("reFresh()", 4000);
     </script>
 {% endblock %}
 {% block body %}
@@ -77,7 +78,6 @@
         {% if game.state == 0 %}
             <h4> En attente d'un joueur pour la partie : {{ game.name }}</h4>
             <blockquote> Créee par : {{ creator }}</blockquote>
-
             <a href="{{ path('app_game_remove', {id: game.id}) }}">
                 <button class="btn waves-effect waves_light  red darken-1">
                     Annuler <i class="material-icons right">clear</i>
@@ -85,21 +85,21 @@
             </a>
         {% else %}
             {% if  app.user.id == game.opponant %}
-            {% if game.current_player == 6 %}
-                <h3>C'est à votre tour de jouer </h3>
+                {% if game.current_player == 6 %}
+                    <h3>C'est à votre tour de jouer (Noir) </h3>
 
-            {% else%}
-                <h3>C'est le tour de votre adversaire </h3>
+                {% else %}
+                    <h3>C'est le tour de votre adversaire </h3>
                 {% endif %}
-                {% endif %}
-            {% if app.user.id == game.creator  %}
+            {% endif %}
+            {% if app.user.id == game.creator %}
                 {% if game.current_player == 5 %}
 
-                <h3>C'est à votre tour de jouer </h3>
-                    {% else %}
+                    <h3>C'est à votre tour de jouer (Blanc) </h3>
+                {% else %}
                     <h3>C'est le tour de votre adversaire</h3>
-            {% endif %}
                 {% endif %}
+            {% endif %}
             <table id="tablo">
                 {% set x = 0 %}
                 {% set y = 0 %}
@@ -122,6 +122,21 @@
                                     </td>
 
                                 {% endif %}
+                            {% elseif case == 4 %}
+                                {% if app.user.id == game.opponant and game.current_player == 6 %}
+                                    <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
+                                                                                          src="https://image.ibb.co/myGKSd/icons8_cercle_plein_filled_100.png"
+                                                                                          draggable="true"
+                                                                                          ondragstart="drag(event)"
+                                                                                          height="40px" width="40px">
+                                    </td>
+                                {% else %}
+                                    <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
+                                                                                          src="https://image.ibb.co/myGKSd/icons8_cercle_plein_filled_100.png"
+                                                                                          height="40px" width="40px">
+                                    </td>
+
+                                {% endif %}
                             {% elseif case == 1 %}
                                 {% if app.user.id == game.creator and game.current_player == 5 %}
                                     <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
@@ -133,6 +148,21 @@
                                 {% else %}
                                     <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
                                                                                           src="https://image.ibb.co/dcuT2d/round.png"
+
+                                                                                          height="40px" width="40px">
+                                    </td>
+                                {% endif %}
+                            {% elseif case == 3 %}
+                                {% if app.user.id == game.creator and game.current_player == 5 %}
+                                    <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
+                                                                                          src="https://image.ibb.co/kmpZtJ/icons8_round_100.png"
+                                                                                          draggable="true"
+                                                                                          ondragstart="drag(event)"
+                                                                                          height="40px" width="40px">
+                                    </td>
+                                {% else %}
+                                    <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
+                                                                                          src="https://image.ibb.co/kmpZtJ/icons8_round_100.png"
 
                                                                                           height="40px" width="40px">
                                     </td>
