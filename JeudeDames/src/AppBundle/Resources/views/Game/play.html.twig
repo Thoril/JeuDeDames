@@ -83,9 +83,32 @@
                 <div class="col s4 offset-s4">
             <h5> Créee par {{ creator }}</h5>
                 </div>
+            </div>
+                <div class="row">
+                    <div class="loader">
+                        <style type="text/css">
+                            .loader {
+                                border: 16px solid #f3f3f3; /* Light grey */
+                                border-top: 16px solid #45d5c3; /* Blue */
+                                border-radius: 50%;
+                                width: 120px;
+                                height: 120px;
+                                margin-left: 45%;
+                                margin-top: 10%;
+                                margin-bottom: 10%;
+                                animation: spin 2s linear infinite;
+                            }
 
+                            @keyframes spin {
+                                0% { transform: rotate(0deg); }
+                                100% { transform: rotate(360deg); }
+                            }
+                        </style>
+                    </div>
+                </div>
 
-            <div class="col s4 offset-s7">
+            <div class="row">
+            <div class="col s4 offset-s4">
             <a href="{{ path('app_game_remove', {id: game.id}) }}">
                 <button class="btn waves-effect waves_light  red darken-1">
                     Annuler <i class="material-icons right">clear</i>
