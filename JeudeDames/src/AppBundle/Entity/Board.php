@@ -135,9 +135,12 @@ class Board
     {
         if (($this->board[$x][$y] == Type::BlackPawn) && $x == 9) {
             $this->board[$x][$y] = Type::WhiteLady;
+            return true;
         } elseif (($this->board[$x][$y] == Type::WhitePawn) && $x == 0) {
             $this->board[$x][$y] = Type::BlackLady;
+            return true;
         }
+        return 1;
     }
 
     public function movePawns($xInit, $yInit, $x, $y)
@@ -170,7 +173,7 @@ class Board
             }
 
         }
-        return false;
+        return 2;
     }
 
     public function isEdible($x, $y, $case)
@@ -243,7 +246,9 @@ class Board
     {
         if ($this->board[$x][$y] != Type::Empty || Type::Forbidden) {
             $this->board[$x][$y] = Type::Empty;
+            return true;
         }
+        return 3;
     }
 
     public function eat($xEater, $yEater, $xEat, $yEat)
@@ -311,7 +316,7 @@ class Board
             $this->player = Type::blackPlayer;
             return true;
         }
-        return false;
+        return 4;
     }
 
     public function movement($xInit, $yInit, $xFutur, $yFutur)
@@ -320,8 +325,14 @@ class Board
         $yMouv = $yFutur - $yInit;
         if (($xMouv == -1 || $xMouv == 1) && ($yMouv == -1 || $yMouv == 1)) {
             if ($this->canEat($xInit, $yInit)==false){
-                $this->movePawns($xInit, $yInit, $xFutur, $yFutur);
-                $this->changePlayer();
+                $resu =  $this->movePawns($xInit, $yInit, $xFutur, $yFutur);
+                if ($resu != true){
+                    return $this->error($resu);
+                }
+                $resu = $this->changePlayer();
+                if ($resu != true){
+                    return $this->error($resu);
+                }
             }
         } elseif (($xMouv == -2 || $xMouv == 2) && ($yMouv == -2 || $yMouv == 2)) {
             $xEat = 1/2*($xFutur-$xInit)+$xInit;
@@ -339,10 +350,29 @@ class Board
         //je vérifie si le joueur a bien pris un de ses pions
         if ($this->player % 2 == $this->board[$xInit][$yInit] % 2) {
             if ($this->board[$xInit][$yInit] == Type::WhitePawn || Type::BlackPawn) {
-                $this->movement($xInit, $yInit, $xFutur, $yFutur);
+                $resu = $this->movement($xInit, $yInit, $xFutur, $yFutur);
+                return $resu;
             } else {
 
             }
+        }
+    }
+
+    public function error($i){
+        switch ($i){
+            case 1:
+                break;
+            case 2:
+                return "error : movePawns() didn't work";
+                break;
+            case 3:
+                return "error : free() didn't work";
+                break;
+            case 4:
+                return "error : changePlayer() didn't work";
+                break;
+            default:
+                break;
         }
     }
 
