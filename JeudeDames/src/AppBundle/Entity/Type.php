@@ -24,8 +24,12 @@ class Type {
 
     const BlackPawn = 2;
 
-    const WhiteLady = 11;
+    const WhiteLady = 3;
 
-    const BlackLady = 22;
+    const BlackLady = 4;
+
+    const whitePlayer = 5;
+
+    const blackPlayer = 6;
 
 }

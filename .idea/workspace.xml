@@ -92,6 +92,9 @@
       <find>Type::BlackPawn</find>
       <find>Upmty</find>
       <find>$this-&gt;B</find>
+      <find>$possibilites</find>
+      <find>$possibilities</find>
+      <find>1</find>
     </findStrings>
     <replaceStrings>
       <replace>Black</replace>
@@ -103,6 +106,8 @@
       <replace>Type::Umpty</replace>
       <replace>Empty</replace>
       <replace>$this-&gt;b</replace>
+      <replace>$way</replace>
+      <replace>2</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -126,6 +131,7 @@
         <option value="$PROJECT_DIR$/JeudeDames/app/config/config.yml" />
         <option value="$PROJECT_DIR$/JeudeDames/phpunit.xml.dist" />
         <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php" />
         <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php" />
         <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php" />
         <option value="$PROJECT_DIR$/JeudeDames/var/cache/dev/twig/15/153a853f5b9dc1771f687507815ae53ad6a308b4630dae3e112f69831820e6f1.php" />
@@ -295,6 +301,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -321,8 +329,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.Unnamed">
-    <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+  <component name="RunManager" selected="PHPUnit.TU">
+    <configuration name="TU" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner directory="$PROJECT_DIR$/JeudeDames" />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -351,8 +359,8 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unnamed - 2018.05.28 at 14h 09m 48s.xml">
-      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TU - 2018.05.30 at 17h 25m 53s.xml">
+      <configuration name="TU" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="Unnamed - 2018.05.28 at 14h 09m 49s.xml">
       <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
@@ -424,7 +432,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -440,14 +450,113 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#270#1282#0#PHP" expanded="false" />
-            <element signature="e#1288#2048#0#PHP" expanded="false" />
-            <element signature="e#2054#2811#0#PHP" expanded="false" />
-            <element signature="e#2817#2939#0#PHP" expanded="false" />
-            <element signature="e#2945#3234#0#PHP" expanded="false" />
-            <element signature="e#6647#6714#0#PHP" expanded="false" />
-            <element signature="e#6881#6965#0#PHP" expanded="false" />
-            <element signature="e#7019#7120#0#PHP" expanded="false" />
+            <element signature="e#263#541#0#PHP" expanded="false" />
+            <element signature="e#547#953#0#PHP" expanded="false" />
+            <element signature="e#959#1843#0#PHP" expanded="false" />
+            <element signature="e#1849#2609#0#PHP" expanded="false" />
+            <element signature="e#2615#3372#0#PHP" expanded="false" />
+            <element signature="e#3378#3500#0#PHP" expanded="false" />
+            <element signature="e#3506#3795#0#PHP" expanded="false" />
+            <element signature="e#4398#6647#0#PHP" expanded="false" />
+            <element signature="e#6653#6987#0#PHP" expanded="false" />
+            <element signature="e#6993#7161#0#PHP" expanded="false" />
+            <element signature="e#7167#8981#0#PHP" expanded="false" />
+            <element signature="e#7872#8196#0#PHP" expanded="false" />
+            <element signature="e#8256#8580#0#PHP" expanded="false" />
+            <element signature="e#8639#8963#0#PHP" expanded="false" />
+            <element signature="e#9024#9091#0#PHP" expanded="false" />
+            <element signature="e#9258#9342#0#PHP" expanded="false" />
+            <element signature="e#9396#9497#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="60" column="30" lean-forward="false" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+          <folding>
+            <element signature="e#42#69#0#PHP" expanded="true" />
+            <element signature="e#257#516#0#PHP" expanded="false" />
+            <element signature="e#522#751#0#PHP" expanded="false" />
+            <element signature="e#757#986#0#PHP" expanded="false" />
+            <element signature="e#992#1375#0#PHP" expanded="false" />
+            <element signature="e#1381#1876#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="108" column="35" lean-forward="false" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
+          <folding>
+            <element signature="e#263#541#0#PHP" expanded="false" />
+            <element signature="e#547#953#0#PHP" expanded="false" />
+            <element signature="e#959#1843#0#PHP" expanded="false" />
+            <element signature="e#1849#2609#0#PHP" expanded="false" />
+            <element signature="e#2615#3372#0#PHP" expanded="false" />
+            <element signature="e#3378#3500#0#PHP" expanded="false" />
+            <element signature="e#3506#3795#0#PHP" expanded="false" />
+            <element signature="e#4398#6647#0#PHP" expanded="false" />
+            <element signature="e#6653#6987#0#PHP" expanded="false" />
+            <element signature="e#6993#7161#0#PHP" expanded="false" />
+            <element signature="e#7167#8981#0#PHP" expanded="false" />
+            <element signature="e#7872#8196#0#PHP" expanded="false" />
+            <element signature="e#8256#8580#0#PHP" expanded="false" />
+            <element signature="e#8639#8963#0#PHP" expanded="false" />
+            <element signature="e#9024#9091#0#PHP" expanded="false" />
+            <element signature="e#9258#9342#0#PHP" expanded="false" />
+            <element signature="e#9396#9497#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#69#0#PHP" expanded="true" />
+            <element signature="e#257#516#0#PHP" expanded="false" />
+            <element signature="e#522#751#0#PHP" expanded="false" />
+            <element signature="e#757#986#0#PHP" expanded="false" />
+            <element signature="e#992#1375#0#PHP" expanded="false" />
+            <element signature="e#1381#1876#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#263#541#0#PHP" expanded="false" />
+            <element signature="e#547#953#0#PHP" expanded="false" />
+            <element signature="e#959#1843#0#PHP" expanded="false" />
+            <element signature="e#1849#2609#0#PHP" expanded="false" />
+            <element signature="e#2615#3372#0#PHP" expanded="false" />
+            <element signature="e#3378#3500#0#PHP" expanded="false" />
+            <element signature="e#3506#3795#0#PHP" expanded="false" />
+            <element signature="e#4398#6647#0#PHP" expanded="false" />
+            <element signature="e#6653#6987#0#PHP" expanded="false" />
+            <element signature="e#6993#7161#0#PHP" expanded="false" />
+            <element signature="e#7167#8981#0#PHP" expanded="false" />
+            <element signature="e#7872#8196#0#PHP" expanded="false" />
+            <element signature="e#8256#8580#0#PHP" expanded="false" />
+            <element signature="e#8639#8963#0#PHP" expanded="false" />
+            <element signature="e#9024#9091#0#PHP" expanded="false" />
+            <element signature="e#9258#9342#0#PHP" expanded="false" />
+            <element signature="e#9396#9497#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -472,14 +581,23 @@
         <state relative-caret-position="336">
           <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
           <folding>
-            <element signature="e#270#1282#0#PHP" expanded="false" />
-            <element signature="e#1288#2048#0#PHP" expanded="false" />
-            <element signature="e#2054#2811#0#PHP" expanded="false" />
-            <element signature="e#2817#2939#0#PHP" expanded="false" />
-            <element signature="e#2945#3234#0#PHP" expanded="false" />
-            <element signature="e#6647#6714#0#PHP" expanded="false" />
-            <element signature="e#6881#6965#0#PHP" expanded="false" />
-            <element signature="e#7019#7120#0#PHP" expanded="false" />
+            <element signature="e#263#541#0#PHP" expanded="false" />
+            <element signature="e#547#953#0#PHP" expanded="false" />
+            <element signature="e#959#1843#0#PHP" expanded="false" />
+            <element signature="e#1849#2609#0#PHP" expanded="false" />
+            <element signature="e#2615#3372#0#PHP" expanded="false" />
+            <element signature="e#3378#3500#0#PHP" expanded="false" />
+            <element signature="e#3506#3795#0#PHP" expanded="false" />
+            <element signature="e#4398#6647#0#PHP" expanded="false" />
+            <element signature="e#6653#6987#0#PHP" expanded="false" />
+            <element signature="e#6993#7161#0#PHP" expanded="false" />
+            <element signature="e#7167#8981#0#PHP" expanded="false" />
+            <element signature="e#7872#8196#0#PHP" expanded="false" />
+            <element signature="e#8256#8580#0#PHP" expanded="false" />
+            <element signature="e#8639#8963#0#PHP" expanded="false" />
+            <element signature="e#9024#9091#0#PHP" expanded="false" />
+            <element signature="e#9258#9342#0#PHP" expanded="false" />
+            <element signature="e#9396#9497#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
