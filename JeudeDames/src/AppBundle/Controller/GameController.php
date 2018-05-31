@@ -296,7 +296,8 @@ class GameController extends Controller
             $xarr = substr($arrive,3,1);
             $yarr = substr($arrive,2,1);
             $board->setPlayer(5);
-            $board->main(intval($xdep), intval($ydep),intval($xarr), intval($yarr));
+            $retour = $board->main(intval($xdep), intval($ydep),intval($xarr), intval($yarr));
+            var_dump($retour);
             $game->setBoard($board->getSerializable());
             $em = $this->getDoctrine()->getManager();
             //persist the new forum

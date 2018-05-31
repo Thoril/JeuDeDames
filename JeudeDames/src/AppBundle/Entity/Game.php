@@ -221,6 +221,6 @@ class Game
         return $this->board;
     }
 
-    
+
 }
 

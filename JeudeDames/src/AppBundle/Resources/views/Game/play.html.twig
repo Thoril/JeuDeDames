@@ -84,9 +84,9 @@
                 {% for lines in plateau %}
                     <tr>
                         {% for case in  lines %}
-                            {% if case == 1 %}
+                            {% if case == 2 %}
                                 <td id="c{{ id }}y{{ y}}x{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)">  <img id="p{{ id }}y{{ y}}x{{ x }}" src="https://image.ibb.co/g8APay/cercle_plein.png" draggable="true" ondragstart="drag(event)" height="40px" width="40px"></td>
-                            {% elseif case == 2 %}
+                            {% elseif case == 1 %}
                                 <td id="c{{ id }}y{{ y}}x{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)">  <img id="p{{ id }}y{{ y }}x{{ x }}" src="https://image.ibb.co/dcuT2d/round.png" draggable="true" ondragstart="drag(event)" height="40px" width="40px"></td>
                             {% elseif case == 0 %}
                                 <td id="c{{ id }}y{{ y}}x{{ x }}" class="brown" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
