@@ -71,6 +71,9 @@
       <find>Type::BlackPawn</find>
       <find>Upmty</find>
       <find>$this-&gt;B</find>
+      <find>$possibilites</find>
+      <find>$possibilities</find>
+      <find>1</find>
     </findStrings>
     <replaceStrings>
       <replace>Black</replace>
@@ -82,6 +85,8 @@
       <replace>Type::Umpty</replace>
       <replace>Empty</replace>
       <replace>$this-&gt;b</replace>
+      <replace>$way</replace>
+      <replace>2</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -105,6 +110,7 @@
         <option value="$PROJECT_DIR$/JeudeDames/app/config/config.yml" />
         <option value="$PROJECT_DIR$/JeudeDames/phpunit.xml.dist" />
         <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Type.php" />
+        <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php" />
         <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Entity/Board.php" />
         <option value="$PROJECT_DIR$/JeudeDames/src/AppBundle/Tests/Entity/BoardEntityTest.php" />
         <option value="$PROJECT_DIR$/JeudeDames/var/cache/dev/twig/15/153a853f5b9dc1771f687507815ae53ad6a308b4630dae3e112f69831820e6f1.php" />
@@ -309,8 +315,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.Unnamed">
-    <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+  <component name="RunManager" selected="PHPUnit.TU">
+    <configuration name="TU" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner directory="$PROJECT_DIR$/JeudeDames" />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -342,8 +348,8 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unnamed - 2018.05.28 at 14h 09m 48s.xml">
-      <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TU - 2018.05.30 at 17h 25m 53s.xml">
+      <configuration name="TU" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="Unnamed - 2018.05.28 at 14h 09m 49s.xml">
       <configuration name="Unnamed" configurationId="PHPUnitRunConfigurationType" />
@@ -415,7 +421,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
