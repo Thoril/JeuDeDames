@@ -174,12 +174,12 @@ class Game
     }
 
     /**
-     * Set state
-     *
-     * @param integer $state
-     *
-     * @return Game
-     */
+ * Set state
+ *
+ * @param integer $state
+ *
+ * @return Game
+ */
     public function setState($state)
     {
         $this->state = $state;
@@ -195,6 +195,30 @@ class Game
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * Set current_player
+     *
+     * @param integer $current_player
+     *
+     * @return Game
+     */
+    public function setCurrent_Player($current_player)
+    {
+        $this->current_player = $current_player;
+
+        return $this;
+    }
+
+    /**
+     * Get current_Player
+     *
+     * @return int
+     */
+    public function getCurrent_Player()
+    {
+        return $this->current_player;
     }
 
     /**

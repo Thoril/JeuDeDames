@@ -14,18 +14,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/GameController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="299" column="30" lean-forward="false" selection-start-line="299" selection-start-column="30" selection-end-line="299" selection-end-column="30" />
-              <folding>
-                <element signature="e#40#67#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GameType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/GameType.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -36,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="play.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="play.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Game/play.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="363">
@@ -48,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="move.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="move.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Game/move.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+              <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -71,9 +59,21 @@
       <file leaf-file-name="Game.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Game.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="822">
-              <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+            <state relative-caret-position="465">
+              <caret line="202" column="37" lean-forward="false" selection-start-line="202" selection-start-column="37" selection-end-line="202" selection-end-column="37" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/GameController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="466">
+              <caret line="156" column="31" lean-forward="false" selection-start-line="156" selection-start-column="31" selection-end-line="156" selection-end-column="31" />
+              <folding>
+                <element signature="e#40#67#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,10 +101,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Board.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Game.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/move.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/GameController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/play.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Game.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/GameController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Game/move.html.twig" />
       </list>
     </option>
   </component>
@@ -327,12 +327,12 @@
       <workItem from="1527516271911" duration="6523000" />
       <workItem from="1527579381547" duration="7907000" />
       <workItem from="1527594284665" duration="16827000" />
-      <workItem from="1527746001228" duration="8418000" />
+      <workItem from="1527746001228" duration="9724000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57683000" />
+    <option name="totallyTimeSpent" value="58989000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -673,14 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Game.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Board.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -689,10 +681,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Game/move.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Game.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+        <state relative-caret-position="465">
+          <caret line="202" column="37" lean-forward="false" selection-start-line="202" selection-start-column="37" selection-end-line="202" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -707,8 +699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/GameController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="299" column="30" lean-forward="false" selection-start-line="299" selection-start-column="30" selection-end-line="299" selection-end-column="30" />
+        <state relative-caret-position="466">
+          <caret line="156" column="31" lean-forward="false" selection-start-line="156" selection-start-column="31" selection-end-line="156" selection-end-column="31" />
           <folding>
             <element signature="e#40#67#0#PHP" expanded="true" />
           </folding>
@@ -722,6 +714,14 @@
           <folding>
             <element signature="e#107#854#0#HTML" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Game/move.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

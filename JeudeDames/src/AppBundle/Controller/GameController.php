@@ -154,6 +154,7 @@ class GameController extends Controller
             }
         }else{
             $board->initGame();
+            $board->setPlayer(6);
             $game->setBoard($board->getSerializable());
             $em = $this->getDoctrine()->getManager();
             //persist the new forum
@@ -290,14 +291,21 @@ class GameController extends Controller
 
             $board = new Board();
             $board->setBoardFromSerializable($game->getBoard());
+            $board->setPlayer($game->getCurrent_Player());
 
-            $xdep = substr($depart,3,1);
-            $ydep = substr($depart,2,1);
-            $xarr = substr($arrive,3,1);
-            $yarr = substr($arrive,2,1);
-            $board->setPlayer(5);
-            $retour = $board->main(intval($xdep), intval($ydep),intval($xarr), intval($yarr));
+            $xdep = substr($depart,2,1);
+            $ydep = substr($depart,1,1);
+            $xarr = substr($arrive,2,1);
+            $yarr = substr($arrive,1,1);
+
+            $retour = $board->main(intval($ydep), intval($xdep),intval($yarr), intval($xarr));
             var_dump($retour);
+            var_dump($xdep);
+            var_dump($ydep);
+            var_dump($xarr);
+            var_dump($yarr);
+            var_dump($board->getBoard());
+            $game->setCurrent_Player($board->getPlayer());
             $game->setBoard($board->getSerializable());
             $em = $this->getDoctrine()->getManager();
             //persist the new forum
