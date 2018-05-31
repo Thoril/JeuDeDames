@@ -87,7 +87,7 @@ class Board
         //Je met un pion blanc, une case sur deux, dont lignes commençant par une case blanche
         for ($x = 6; $x < 9; $x = $x + 2) {
             for ($y = 0; $y < 10; $y++) {
-                if (($y % 2 != 0) && ($this->board[$x][$y] == Type::Empty)) {
+                if (($y % 2 != 0) && ($this->getCase($x,$y) == Type::Empty)) {
                     $this->board[$x][$y] = Type::WhitePawn;
                 }
             }
@@ -96,7 +96,7 @@ class Board
         //Je met un pion blanc, une case sur deux, dont lignes commençant par une case noire
         for ($x = 7; $x < 10; $x = $x + 2) {
             for ($y = 0; $y < 9; $y++) {
-                if (($y % 2 == 0) && ($this->board[$x][$y] == Type::Empty)) {
+                if (($y % 2 == 0) && ($this->getCase($x,$y) == Type::Empty)) {
                     $this->board[$x][$y] = Type::WhitePawn;
                 }
             }
@@ -108,7 +108,7 @@ class Board
         //Je met un pion noir, une case sur deux, dont lignes commençant par une case blanche
         for ($x = 0; $x < 3; $x = $x + 2) {
             for ($y = 1; $y < 10; $y++) {
-                if (($y % 2 != 0) && ($this->board[$x][$y] == Type::Empty)) {
+                if (($y % 2 != 0) && ($this->getCase($x,$y) == Type::Empty)) {
                     $this->board[$x][$y] = Type::BlackPawn;
                 }
             }
@@ -117,7 +117,7 @@ class Board
         //Je met un pion noir, une case sur deux, dont lignes commençant par une case noire
         for ($x = 1; $x < 4; $x = $x + 2) {
             for ($y = 0; $y < 9; $y++) {
-                if (($y % 2 == 0) && ($this->board[$x][$y] == Type::Empty)) {
+                if (($y % 2 == 0) && ($this->getCase($x,$y) == Type::Empty)) {
                     $this->board[$x][$y] = Type::BlackPawn;
                 }
             }
@@ -133,10 +133,10 @@ class Board
 
     public function beLady($x, $y)
     {
-        if (($this->board[$x][$y] == Type::BlackPawn) && $x == 9) {
+        if (($this->getCase($x,$y) == Type::BlackPawn) && $x == 9) {
             $this->board[$x][$y] = Type::WhiteLady;
             return true;
-        } elseif (($this->board[$x][$y] == Type::WhitePawn) && $x == 0) {
+        } elseif (($this->getCase($x,$y) == Type::WhitePawn) && $x == 0) {
             $this->board[$x][$y] = Type::BlackLady;
             return true;
         }
@@ -145,7 +145,7 @@ class Board
 
     public function movePawns($xInit, $yInit, $x, $y)
     {
-        if (($this->board[$x][$y] == Type::Empty)
+        if (($this->getCase($x,$y) == Type::Empty)
             && ($this->canEat($x, $y) == false)) {
             if ($this->board[$xInit][$yInit] == Type::WhitePawn
                 && $xInit > $x
@@ -180,46 +180,46 @@ class Board
     {
         switch ($case) {
             case "hl" :
-                if ($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x - 1][$y - 1] == Type::BlackPawn
-                    && $this->board[$x - 2][$y - 2] == Type::Empty) {
+                if ($this->getCase($x,$y) == Type::WhitePawn
+                    && $this->getCase($x-1,$y-1) == Type::BlackPawn
+                    && $this->getCase($x-2,$y-2) == Type::Empty) {
                     return true;
-                } elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x - 1][$y - 1] == Type::WhitePawn
-                    && $this->board[$x - 2][$y - 2] == Type::Empty) {
+                } elseif ($this->getCase($x,$y) == Type::BlackPawn
+                    && $this->getCase($x-1,$y-1) == Type::WhitePawn
+                    && $this->getCase($x-2,$y-2) == Type::Empty) {
                     return true;
                 }
                 break;
             case "hr" :
-                if ($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x - 1][$y + 1] == Type::BlackPawn
-                    && $this->board[$x - 2][$y + 2] == Type::Empty) {
+                if ($this->getCase($x,$y) == Type::WhitePawn
+                    && $this->getCase($x-1,$y+1) == Type::BlackPawn
+                    && $this->getCase($x-2,$y+2) == Type::Empty) {
                     return true;
-                } elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x - 1][$y + 1] == Type::WhitePawn
-                    && $this->board[$x - 2][$y + 2] == Type::Empty) {
+                } elseif ($this->getCase($x,$y) == Type::BlackPawn
+                    && $this->getCase($x-1,$y+1) == Type::WhitePawn
+                    && $this->getCase($x-2,$y+2) == Type::Empty) {
                     return true;
                 }
                 break;
             case"ll":
-                if ($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x + 1][$y - 1] == Type::BlackPawn
-                    && $this->board[$x + 2][$y - 2] == Type::Empty) {
+                if ($this->getCase($x,$y) == Type::WhitePawn
+                    && $this->getCase($x+1,$y-1) == Type::BlackPawn
+                    && $this->getCase($x+2,$y-2) == Type::Empty) {
                     return true;
-                } elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x + 1][$y - 1] == Type::WhitePawn
-                    && $this->board[$x + 2][$y - 2] == Type::Empty) {
+                } elseif ($this->getCase($x,$y) == Type::BlackPawn
+                    && $this->getCase($x+1,$y-1) == Type::WhitePawn
+                    && $this->getCase($x+2,$y-2) == Type::Empty) {
                     return true;
                 }
                 break;
             case "lr":
-                if ($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x + 1][$y + 1] == Type::BlackPawn
-                    && $this->board[$x + 2][$y + 2] == Type::Empty) {
+                if ($this->getCase($x,$y) == Type::WhitePawn
+                    && $this->getCase($x+1,$y+1) == Type::BlackPawn
+                    && $this->getCase($x+2,$y+2) == Type::Empty) {
                     return true;
-                } elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x + 1][$y + 2] == Type::WhitePawn
-                    && $this->board[$x + 1][$y + 2] == Type::Empty) {
+                } elseif ($this->getCase($x,$y) == Type::BlackPawn
+                    && $this->getCase($x+1,$y+1) == Type::WhitePawn
+                    && $this->getCase($x+2,$y+2) == Type::Empty) {
                     return true;
                 }
                 break;
@@ -244,7 +244,7 @@ class Board
 
     public function free($x, $y)
     {
-        if ($this->board[$x][$y] != Type::Empty || Type::Forbidden) {
+        if ($this->getCase($x,$y) != Type::Empty || Type::Forbidden || null) {
             $this->board[$x][$y] = Type::Empty;
             return true;
         }
@@ -378,6 +378,13 @@ class Board
         }
     }
 
+    public function getCase($x,$y){
+        if($x<10 && $x>=0 && $y<10 && $y>=0){
+            return $this->board[$x][$y];
+        }else {
+            return false;
+        }
+    }
     /**
      * @return array
      */
