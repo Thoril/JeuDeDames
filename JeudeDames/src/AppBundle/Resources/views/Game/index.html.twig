@@ -1,18 +1,17 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}AppBundle:Game:index{% endblock %}
-{% block head %}
-    <script>
-        function reFresh() {
-            location.reload(true)
-        }
-        window.setInterval("reFresh()",5000);
-    </script>
-{% endblock %}
+
 
 {% block body %}
 
     {% if is_granted('ROLE_USER') %}
+        <script>
+            function reFresh() {
+                location.reload(true)
+            }
+            window.setInterval("reFresh()",5000);
+        </script>
         <p>Bienvenue {{ app.user.username }}</p>
         <h3> Liste des parties en attente d'un joueur</h3>
             <a href="{{ path('app_game_add') }}" >
