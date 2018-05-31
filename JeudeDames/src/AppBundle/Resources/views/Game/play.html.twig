@@ -1,7 +1,14 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}AppBundle:Game:play{% endblock %}
-
+{% block head %}
+    <script>
+    function reFresh() {
+    location.reload(true)
+    }
+    window.setInterval("reFresh()",5000);
+    </script>
+{% endblock %}
 {% block body %}
     <style type="text/css">
         #white {
@@ -63,6 +70,7 @@
             $('body').append(form);
             form.submit();
         }
+
     </script>
 
     {% if is_granted('ROLE_USER') %}
