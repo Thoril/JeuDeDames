@@ -1,13 +1,16 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}AppBundle:Game:index{% endblock %}
-
+{% block head %}
+    <script>
+        function reFresh() {
+            location.reload(true)
+        }
+        window.setInterval("reFresh()",5000);
+    </script>
+{% endblock %}
 
 {% block body %}
-
-    <script language = "javascript"
-            src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
 
     {% if is_granted('ROLE_USER') %}
         <p>Bienvenue {{ app.user.username }}</p>
