@@ -11,11 +11,11 @@ use AppBundle\Entity\Pawns;
  * Date: 15/05/2018
  * Time: 16:58
  */
-
 class Board
 {
-    public $board;
-    public $coordBoard = array();
+    private $board;
+    private $coordBoard = array();
+    private $player;
 
     public function board()
     {
@@ -45,7 +45,7 @@ class Board
                 for ($i = 0; $i < 10; $i++) {
                     $z[$i] = null;
                 }
-                $row[$y]=$z;
+                $row[$y] = $z;
             }
             $line[$x] = $row;
         }
@@ -131,10 +131,11 @@ class Board
         $this->initBlack();
     }
 
-    public function beLady($x, $y){
-        if (($this->board[$x][$y] == Type::BlackPawn) && $x == 9){
+    public function beLady($x, $y)
+    {
+        if (($this->board[$x][$y] == Type::BlackPawn) && $x == 9) {
             $this->board[$x][$y] = Type::WhiteLady;
-        }elseif(($this->board[$x][$y] == Type::WhitePawn) && $x == 0){
+        } elseif (($this->board[$x][$y] == Type::WhitePawn) && $x == 0) {
             $this->board[$x][$y] = Type::BlackLady;
         }
     }
@@ -142,25 +143,29 @@ class Board
     public function movePawns($xInit, $yInit, $x, $y)
     {
         if (($this->board[$x][$y] == Type::Empty)
-            && ($this->canEat($x,$y) == false)){
+            && ($this->canEat($x, $y) == false)) {
             if ($this->board[$xInit][$yInit] == Type::WhitePawn
-                && $xInit>$x)
-            {
-                $this->board[$x][$y] = $this->board[$xInit][$yInit];
-                $this->free($xInit, $yInit);
-                if($x == 0){
-                    $this->board[$x][$y] =  Type::WhiteLady;
+                && $xInit > $x
+                && $this->player == Type::whitePlayer) {
+                if ($x == 0) {
+                    $this->board[$x][$y] = Type::WhiteLady;
+
+                } else {
+                    $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 }
+                $this->free($xInit, $yInit);
                 return true;
 
             } else if ($this->board[$xInit][$yInit] == Type::BlackPawn
-                && $xInit<$x)
-            {
-                $this->board[$x][$y] = $this->board[$xInit][$yInit];
-                $this->free($xInit, $yInit);
-                if($x == 9){
-                    $this->board[$x][$y] =  Type::BlackLady;
+                && $xInit < $x
+                && $this->player == Type::blackPlayer) {
+
+                if ($x == 9) {
+                    $this->board[$x][$y] = Type::BlackLady;
+                } else {
+                    $this->board[$x][$y] = $this->board[$xInit][$yInit];
                 }
+                $this->free($xInit, $yInit);
                 return true;
             }
 
@@ -168,49 +173,50 @@ class Board
         return false;
     }
 
-    public function isEdible($x, $y, $case){
-        switch ($case){
+    public function isEdible($x, $y, $case)
+    {
+        switch ($case) {
             case "hl" :
-                if($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x-1][$y-1] == Type::BlackPawn
-                    && $this->board[$x-2][$y-2] == Type::Empty){
+                if ($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x - 1][$y - 1] == Type::BlackPawn
+                    && $this->board[$x - 2][$y - 2] == Type::Empty) {
                     return true;
-                }elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x-1][$y-1] == Type::WhitePawn
-                    && $this->board[$x-2][$y-2] == Type::Empty){
+                } elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x - 1][$y - 1] == Type::WhitePawn
+                    && $this->board[$x - 2][$y - 2] == Type::Empty) {
                     return true;
                 }
                 break;
             case "hr" :
-                if($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x-1][$y+1] == Type::BlackPawn
-                    && $this->board[$x-2][$y+2] == Type::Empty){
+                if ($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x - 1][$y + 1] == Type::BlackPawn
+                    && $this->board[$x - 2][$y + 2] == Type::Empty) {
                     return true;
-                }elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x-1][$y+1] == Type::WhitePawn
-                    && $this->board[$x-2][$y+2] == Type::Empty){
+                } elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x - 1][$y + 1] == Type::WhitePawn
+                    && $this->board[$x - 2][$y + 2] == Type::Empty) {
                     return true;
                 }
                 break;
             case"ll":
-                if($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x+1][$y-1] == Type::BlackPawn
-                    && $this->board[$x+2][$y-2] == Type::Empty){
+                if ($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x + 1][$y - 1] == Type::BlackPawn
+                    && $this->board[$x + 2][$y - 2] == Type::Empty) {
                     return true;
-                }elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x+1][$y-1] == Type::WhitePawn
-                    && $this->board[$x+2][$y-2] == Type::Empty){
+                } elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x + 1][$y - 1] == Type::WhitePawn
+                    && $this->board[$x + 2][$y - 2] == Type::Empty) {
                     return true;
                 }
                 break;
             case "lr":
-                if($this->board[$x][$y] == Type::WhitePawn
-                    && $this->board[$x+1][$y+1] == Type::BlackPawn
-                    && $this->board[$x+2][$y+2] == Type::Empty){
+                if ($this->board[$x][$y] == Type::WhitePawn
+                    && $this->board[$x + 1][$y + 1] == Type::BlackPawn
+                    && $this->board[$x + 2][$y + 2] == Type::Empty) {
                     return true;
-                }elseif ($this->board[$x][$y] == Type::BlackPawn
-                    && $this->board[$x+1][$y+2] == Type::WhitePawn
-                    && $this->board[$x+1][$y+2] == Type::Empty){
+                } elseif ($this->board[$x][$y] == Type::BlackPawn
+                    && $this->board[$x + 1][$y + 2] == Type::WhitePawn
+                    && $this->board[$x + 1][$y + 2] == Type::Empty) {
                     return true;
                 }
                 break;
@@ -221,14 +227,14 @@ class Board
         return false;
     }
 
-    public function canEat($x, $y){
+    public function canEat($x, $y)
+    {
         if ($this->isEdible($x, $y, "hl") == false
-            && $this->isEdible($x, $y, "hr")== false
-            && $this->isEdible($x, $y, "ll")== false
-            && $this->isEdible($x, $y, "lr")== false)
-        {
+            && $this->isEdible($x, $y, "hr") == false
+            && $this->isEdible($x, $y, "ll") == false
+            && $this->isEdible($x, $y, "lr") == false) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -240,14 +246,15 @@ class Board
         }
     }
 
-    public function eat($xEater, $yEater, $xEat, $yEat){
+    public function eat($xEater, $yEater, $xEat, $yEat)
+    {
         //Je calcul mon mouvement a effectuer en cas de prise
-        $xMouv = (-2)*($xEater - $xEat);
-        $yMouv = (-2)*($yEater - $yEat);
+        $xMouv = (-2) * ($xEater - $xEat);
+        $yMouv = (-2) * ($yEater - $yEat);
 
         //je vérifie si je peux mangé
-        if($xMouv == 2 && $yMouv == -2){
-            if($this->isEdible($xEater, $yEater, "ll")==true){
+        if ($xMouv == 2 && $yMouv == -2) {
+            if ($this->isEdible($xEater, $yEater, "ll") == true) {
                 //si oui je mange
                 $xFutur = $xEater + $xMouv;
                 $yFutur = $yEater + $yMouv;
@@ -255,56 +262,90 @@ class Board
                 $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
                 $this->free($xEater, $yEater);
                 $this->free($xEat, $yEat);
+
+                return true;
             }
-        }elseif($xMouv == 2 && $yMouv == 2){
-            if($this->isEdible($xEater, $yEater, "lr")==true){
+        } elseif ($xMouv == 2 && $yMouv == 2) {
+            if ($this->isEdible($xEater, $yEater, "lr") == true) {
                 $xFutur = $xEater + $xMouv;
                 $yFutur = $yEater + $yMouv;
 
                 $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
                 $this->free($xEater, $yEater);
                 $this->free($xEat, $yEat);
+
+                return true;
             }
-        }elseif($xMouv == -2 && $yMouv == -2){
-            if($this->isEdible($xEater, $yEater, "hl")==true){
+        } elseif ($xMouv == -2 && $yMouv == -2) {
+            if ($this->isEdible($xEater, $yEater, "hl") == true) {
                 $xFutur = $xEater + $xMouv;
                 $yFutur = $yEater + $yMouv;
 
                 $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
                 $this->free($xEater, $yEater);
                 $this->free($xEat, $yEat);
+
+                return true;
             }
-        }elseif($xMouv == -2 && $yMouv == 2){
-            if($this->isEdible($xEater, $yEater, "hr")==true){
+        } elseif ($xMouv == -2 && $yMouv == 2) {
+            if ($this->isEdible($xEater, $yEater, "hr") == true) {
                 $xFutur = $xEater + $xMouv;
                 $yFutur = $yEater + $yMouv;
 
                 $this->board[$xFutur][$yFutur] = $this->board[$xEater][$yEater];
                 $this->free($xEater, $yEater);
                 $this->free($xEat, $yEat);
+
+                return true;
             }
         }
 
-
+        return false;
     }
 
-    public function movement($xInit, $yInit, $xFutur, $yFutur){
+    public function changePlayer(){
+        if ($this->player == Type::blackPlayer){
+            $this->player = Type::whitePlayer;
+            return true;
+        }elseif  ($this->player == Type::whitePlayer) {
+            $this->player = Type::blackPlayer;
+            return true;
+        }
+        return false;
+    }
+
+    public function movement($xInit, $yInit, $xFutur, $yFutur)
+    {
         $xMouv = $xFutur - $xInit;
         $yMouv = $yFutur - $yInit;
-        if(($xMouv == -1 || $xMouv == 1) &&  ($yMouv == -1|| $yMouv == 1)) {
-            $this->movePawns($xInit, $yInit, $xFutur, $yFutur);
-        }elseif(($xMouv == -3 || $xMouv == 3) &&  ($yMouv == -3 || $yMouv == 3)) {
-            $this->eat($xInit, $yInit, $xInit+$xMouv, $yInit + $yMouv);
+        if (($xMouv == -1 || $xMouv == 1) && ($yMouv == -1 || $yMouv == 1)) {
+            if ($this->canEat($xInit, $yInit)==false){
+                $this->movePawns($xInit, $yInit, $xFutur, $yFutur);
+                $this->changePlayer();
+            }
+        } elseif (($xMouv == -2 || $xMouv == 2) && ($yMouv == -2 || $yMouv == 2)) {
+            $xEat = 1/2*($xFutur-$xInit)+$xInit;
+            $yEat = 1/2*($yFutur-$yInit)+$yInit;
+            $this->eat($xInit, $yInit, $xEat, $yEat);
+            //si le joueur ne peut plus jouer, c'est au tour de l'autre joueur
+            if ($this->canEat($xFutur, $yFutur)==false) {
+                $this->changePlayer();
+            }
         }
     }
 
-    public function main($xInit, $yInit, $xFutur, $yFutur){
-        if($this->board[$xInit][$yInit] == Type::WhitePawn || Type::BlackPawn){
-            $this->movement($xInit, $yInit, $xFutur, $yFutur);
-        }else{
+    public function main($xInit, $yInit, $xFutur, $yFutur)
+    {
+        //je vérifie si le joueur a bien pris un de ses pions
+        if ($this->player % 2 == $this->board[$xInit][$yInit] % 2) {
+            if ($this->board[$xInit][$yInit] == Type::WhitePawn || Type::BlackPawn) {
+                $this->movement($xInit, $yInit, $xFutur, $yFutur);
+            } else {
 
+            }
         }
     }
+
     /**
      * @return array
      */
@@ -338,12 +379,29 @@ class Board
     }
 
     /**
-     * @retrun array
+     * @return mixed
      */
-    public function getSerializable(){
-        return serialize($this->board);
+    public function getPlayer()
+    {
+        return $this->player;
     }
 
+    /**
+     * @param mixed $player
+     */
+    public function setPlayer($player)
+    {
+        $this->player = $player;
+    }
+
+
+    /**
+     * @retrun array
+     */
+    public function getSerializable()
+    {
+        return serialize($this->board);
+    }
 
 
     /*
