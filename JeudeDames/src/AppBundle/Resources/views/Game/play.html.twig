@@ -7,7 +7,7 @@
             location.reload(true)
         }
 
-        window.setInterval("reFresh()", 5000);
+        window.setInterval("reFresh()", 4000);
     </script>
 {% endblock %}
 {% block body %}
@@ -86,7 +86,7 @@
         {% else %}
             {% if  app.user.id == game.opponant %}
                 {% if game.current_player == 6 %}
-                    <h3>C'est à votre tour de jouer </h3>
+                    <h3>C'est à votre tour de jouer (Noir) </h3>
 
                 {% else %}
                     <h3>C'est le tour de votre adversaire </h3>
@@ -95,7 +95,7 @@
             {% if app.user.id == game.creator %}
                 {% if game.current_player == 5 %}
 
-                    <h3>C'est à votre tour de jouer </h3>
+                    <h3>C'est à votre tour de jouer (Blanc) </h3>
                 {% else %}
                     <h3>C'est le tour de votre adversaire</h3>
                 {% endif %}
