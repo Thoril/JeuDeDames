@@ -76,15 +76,23 @@
     {% if is_granted('ROLE_USER') %}
         {% if game.state == 0 %}
 
+            <div class="row">
+                <div class="col s5 offset-s4">
             <h4> En attente d'un joueur pour la partie : {{ game.name }}</h4>
-            <blockquote> Créee par : {{ creator }}</blockquote>
+                </div>
+                <div class="col s4 offset-s4">
+            <h5> Créee par {{ creator }}</h5>
+                </div>
 
+
+            <div class="col s4 offset-s7">
             <a href="{{ path('app_game_remove', {id: game.id}) }}">
                 <button class="btn waves-effect waves_light  red darken-1">
                     Annuler <i class="material-icons right">clear</i>
                 </button>
             </a>
-
+            </div>
+            </div>
 
         {% else %}
             {% if  app.user.id == game.opponant %}
@@ -154,11 +162,18 @@
                     </tr>
                 {% endfor %}
             </table>
-            <a href="{{ path('app_game_abandon', {id: game.id}) }}" >
-                <button class="btn waves-effect waves_light red darken-1"><i class="material-icons right">clear</i>
-                    Abandonner
-                </button>
-            </a>
+
+            <br/>
+            <div class="row">
+
+                <div class="col s5 offset-s5">
+                    <a href="{{ path('app_game_abandon', {id: game.id}) }}" >
+                        <button class="btn waves-effect waves_light red darken-1"><i class="material-icons right">clear</i>
+                            Abandonner
+                        </button>
+                    </a>
+                </div>
+            </div>
         {% endif %}
     {% endif %}
 {% endblock %}
