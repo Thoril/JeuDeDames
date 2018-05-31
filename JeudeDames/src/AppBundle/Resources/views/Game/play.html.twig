@@ -66,7 +66,7 @@
     {% if is_granted('ROLE_USER') %}
         {% if game.state == 0 %}
             <h4> En attente d'un joueur pour la partie : {{ game.name }}</h4>
-            <blockquote> Créee par : {{ game.creator }}</blockquote>
+            <blockquote> Créee par : {{ creator }}</blockquote>
 
             <a href="{{ path('app_game_remove', {id: game.id}) }}" >
                 <button class="btn waves-effect waves_light  red darken-1">
@@ -76,8 +76,7 @@
         {% else %}
 
             <h4> Lancement de la partie : {{ game.name }}</h4>
-            <blockquote> Créee par : {{ game.creator }}</blockquote>
-                   <div id="affichage"></div>
+            <blockquote> Créee par : {{ creator }}</blockquote>
             <table id="tablo">
                 {% set x = 0 %}
                 {% set y = 0 %}

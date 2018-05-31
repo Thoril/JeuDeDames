@@ -12,17 +12,17 @@
 
                <h4> Fin de la partie  : {{ game.name }}</h4>
 
-               <h6> Créee par : {{ game.creator }}</h6>
+               <h6> Créee par : {{ creator }}</h6>
 
 
-               <h3>Le gagnant est {{ game.winner }}</h3>
+               <h3>Le gagnant est {{ username }}</h3>
 
                <a href="{{ path('homepage') }}" >
                <button class="btn waves-effect waves_light light-blue darken-1">
                        Accueil
                </button>
                </a>
-               
+
            </div>
 
         {% endif %}

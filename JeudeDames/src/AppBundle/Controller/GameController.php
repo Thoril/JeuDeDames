@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Board;
 use AppBundle\Entity\Game;
+use AppBundle\Entity\User;
 use AppBundle\Form\GameType;
 use Psr\Log\NullLogger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,9 +25,20 @@ class GameController extends Controller
         $game = $this->getDoctrine()
             ->getRepository(Game::class)
             ->findAll();
+        $creatorAff = array();
+        foreach($game as $value) {
+            $findCreator = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->find($value->getCreator());
+
+            array_push($creatorAff, $findCreator);
+           // var_dump($creatorAff);
+        }
+        //var_dump($creatorAff);
 
         return $this->render('AppBundle:Game:index.html.twig', array(
-            'games' =>$game
+            'games' =>$game,
+            'creator'=>$creatorAff
 
         ));
     }
@@ -88,32 +100,48 @@ class GameController extends Controller
             ->getRepository(Game::class)
             ->find($id);
         $board = new Board();
-        $board->initGame();
 
         $opponant = $game->getOpponant();
         $etat = $game->getState();
         $winner = $game->getWinner();
-        echo" E0 : $etat  - ";
-        echo"OP0 : $opponant  -";
+
+        //On cherche l'id de du créateur de la partie dans la classe User
+        $findCreator = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($game->getCreator());
+        //Grace à l'id on récupère l'username
+        $creatorAff = $findCreator->getUsername();
+
         if ($opponant != null) {
+            $board->initGame();
             //En attente d'un second joueur
             if ($etat == 0) {
                 //La partie est en cours
-
                 $game->setState(1);
                 //Récupération du manager
                 $em = $this->getDoctrine()->getManager();
                 //persist the new forum
                 $em->persist($game);
-
                 //flush entity manager
                 $em->flush();
-
                 return $this->render('AppBundle:Game:play.html.twig', array(
                     'game' => $game,
-                     'plateau' => $board->getBoard()
+                    'plateau' => $board->getBoard(),
+                    'creator'=>$creatorAff
+
                 ));
             }
+
+            //Partie en cours
+            if($etat == 1){
+                return $this->render('AppBundle:Game:play.html.twig', array(
+                    'game' => $game,
+                    'creator'=>$creatorAff,
+                    'plateau' => $board->getBoard()
+                ));
+
+            }
+
             //La partie est terminée
             else if($etat == 2){
                 if($winner != null){
@@ -127,7 +155,8 @@ class GameController extends Controller
         }
         return $this->render('AppBundle:Game:play.html.twig', array(
             'game' => $game,
-            'plateau' => $board->getBoard()
+            'creator'=>$creatorAff
+
 
         ));
     }
@@ -222,8 +251,22 @@ class GameController extends Controller
             ->getRepository(Game::class)
             ->find($id);
 
-        return $this->render('AppBundle:Game:gameover.html.twig', array(
-            'game' => $game
+        $findWinner = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($game->getWinner());
+
+        $findCreator = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($game->getCreator());
+
+        $winner = $findWinner->getUsername();
+        $creator = $findCreator->getUsername();
+
+ return $this->render('AppBundle:Game:gameover.html.twig', array(
+            'game' => $game,
+            'username' =>$winner,
+            'creator'=>$creator
+
 
         ));
     }
