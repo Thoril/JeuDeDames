@@ -304,16 +304,20 @@ class GameController extends Controller
             }elseif($xarr == 'y'){
                 $xarr = '0';
                 $retour = $board->main(intval($ydep), intval($xdep),intval($xarr), intval($yarr));
+                var_dump($ydep);
+                var_dump($xdep);
+                var_dump($xarr);
+                var_dump($yarr);
             }else{
                 $retour = $board->main(intval($ydep), intval($xdep),intval($yarr), intval($xarr));
 
             }
-            var_dump($retour);
+            /**var_dump($retour);
             var_dump($xdep);
             var_dump($ydep);
             var_dump($xarr);
             var_dump($yarr);
-            var_dump($board->getBoard());
+            var_dump($board->getBoard());**/
             $game->setCurrent_Player($board->getPlayer());
             $game->setBoard($board->getSerializable());
             $em = $this->getDoctrine()->getManager();

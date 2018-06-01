@@ -139,10 +139,13 @@
                 {% set x = 0 %}
                 {% set y = 0 %}
                 {% set id = 0 %}
+                {% set pNoir = 0 %}
+                {% set pBlanc = 0 %}
                 {% for lines in plateau %}
                     <tr>
                         {% for case in  lines %}
                             {% if case == 2 %}
+                                {% set pNoir = 1 %}
                                 {% if app.user.id == game.opponant and game.current_player == 6 %}
                                     <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
                                                                                           src="https://image.ibb.co/g8APay/cercle_plein.png"
@@ -156,8 +159,10 @@
                                                                                           height="40px" width="40px">
                                     </td>
 
+
                                 {% endif %}
                             {% elseif case == 4 %}
+                                {% set pNoir = 1 %}
                                 {% if app.user.id == game.opponant and game.current_player == 6 %}
                                     <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
                                                                                           src="https://image.ibb.co/myGKSd/icons8_cercle_plein_filled_100.png"
@@ -173,6 +178,7 @@
 
                                 {% endif %}
                             {% elseif case == 1 %}
+                                {% set pBlanc = pBlanc+1 %}
                                 {% if app.user.id == game.creator and game.current_player == 5 %}
                                     <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
                                                                                           src="https://image.ibb.co/dcuT2d/round.png"
@@ -188,6 +194,7 @@
                                     </td>
                                 {% endif %}
                             {% elseif case == 3 %}
+                                {% set pBlanc = pBlanc+1 %}
                                 {% if app.user.id == game.creator and game.current_player == 5 %}
                                     <td id="c{{ id }}y{{ y }}x{{ x }}" class="brown"><img id="p{{ id }}y{{ y }}x{{ x }}"
                                                                                           src="https://image.ibb.co/kmpZtJ/icons8_round_100.png"
@@ -216,7 +223,12 @@
                     </tr>
                 {% endfor %}
             </table>
-
+            {% if pBlanc == 0 %}
+                <h4>Victoire des Noirs </h4>
+                {% endif %}
+            {% if pNoir == 0 %}
+                <h4>Victoire des Blancs</h4>
+                {% endif %}
             <br/>
             <div class="row">
 
