@@ -37,10 +37,12 @@
         </span>
 
         <blockquote> Créee par :
+            {% set indice = 0 %}
             {%  for user in creator %}
-                {%  if user.id == game.creator %}
+                {%  if user.id == game.creator and indice == 0 %}
                     {{ user.username }}
-            {%  endif %}
+                    {%  set indice = 1 %}
+               {% endif %}
             {%  endfor %}
         </blockquote>
 

@@ -101,7 +101,9 @@ class GameController extends Controller
             ->getRepository(Game::class)
             ->find($id);
         $board = new Board();
-
+        if($game ==null){
+            header('Location: /');
+        }
         $opponant = $game->getOpponant();
         $etat = $game->getState();
         $winner = $game->getWinner();
